@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+        }
+        #box3{
+            width: 50px;
+            height: 50px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+  <div id="box2">
+    <div id="box3"></div>
+  </div>
+</div>
+<script>
+    let box1 = document.getElementById("box1");
+    let box2 = document.getElementById("box2");
+    let box3 = document.getElementById("box3");
+
+    //addEventListener 第三个参数，用来决定事件流的方向，
+    // false 表示事件冒泡过程 默认值  box3->box2->box1
+    // true 表示事件捕获过程
+    //事件冒泡过程：从点击的元素开始 传递给父级元素 一级一级的传递 最后传递到
+    box1.addEventListener("click",function () {
+        console.log(this.id);
+    });
+    box2.addEventListener("click",function () {
+        console.log(this.id);
+    })
+    box3.addEventListener("click",function () {
+        console.log(this.id);
+    })
+
+    //事件捕获过程  1->2->3 父级先捕获事件 先执行捕获，后执行冒泡的过程
+    box1.addEventListener("click",function () {
+        console.log(1);
+    },true);
+    box2.addEventListener("click",function () {
+        console.log(2);
+    },true)
+    box3.addEventListener("click",function () {
+        console.log(3);
+    },true)
+</script>
+</body>
+</html>

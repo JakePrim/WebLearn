@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>
+            <input type="checkbox" id="all">
+        </th>
+        <th>商品</th>
+        <th>价钱</th>
+    </tr>
+    </thead>
+    <tbody id="tb">
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>小米</td>
+        <td>$100</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>小米</td>
+        <td>$100</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>小米</td>
+        <td>$100</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>小米</td>
+        <td>$100</td>
+    </tr>
+    </tbody>
+</table>
+<input type="button" value="反选" id="btn">
+<script>
+    //1. 全选
+    //2. 子选项选择包括控制全选
+    //3. 反选
+    let all = document.getElementById("all");let tb = document.getElementById("tb");let items = tb.getElementsByTagName("input");let btn = document.getElementById("btn");
+    let cbs = Array(items.length).fill(false);//默认全部填充flase
+    let proxy = new Proxy(cbs,{
+        get(target, p, receiver) {
+            return Reflect.get(target,p,receiver);
+        },
+        set(target, p, value, receiver) {
+            target[p] = value;
+            items[p].checked = value;
+            let flag = target.every(function (value, array) {
+                return value === true;
+            });
+            if (flag){
+                if (!all.checked){
+                    all.checked = true;
+                }
+            }else{
+                if (all.checked){
+                    all.checked = false;
+                }
+            }
+        },
+    })
+    all.onclick = function () {
+        for (let i = 0; i < items.length; i++) {
+            items[i].checked = this.checked;
+            cbs[i] = this.checked;
+        }
+    }
+    for (let i = 0; i < items.length; i++) {
+        items[i].onclick = function () {
+            proxy[i] = this.checked;
+        }
+    }
+    btn.onclick = function () {
+        for (let i = 0; i < proxy.length; i++) {
+            proxy[i] = !proxy[i];
+        }
+    }
+</script>
+</body>
+</html>

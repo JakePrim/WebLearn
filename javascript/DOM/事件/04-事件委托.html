@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      ul,li{
+        list-style: none;
+      }
+      #list{
+          margin: 50px auto;
+          font-size: 24px;
+          line-height: 48px;
+          width: 100px;
+          border: 1px solid skyblue;
+      }
+      li{
+          padding-left: 20px;
+          cursor: pointer;
+      }
+    </style>
+</head>
+<body>
+<ul id="list">
+  <li>12323</li>
+  <li>12323</li>
+  <li>12323</li>
+  <li>12323</li>
+  <li>12323</li>
+</ul>
+<script>
+    let list = document.getElementById("list");
+    let lis = list.children;
+    //事件委托：将一些子级的公共类型的事件委托给他们的父级添加，在父级内部向办法找到真正触发事件的最底层事件源
+    list.addEventListener("click",function (e) {
+        //参数e 是事件对象，包含了事件的一系列数据
+        //e.target;真正触发事件源
+        e = e || window.event;
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].style.backgroundColor = "";
+        }
+        e.target.style.backgroundColor="pink";
+    });
+</script>
+</body>
+</html>

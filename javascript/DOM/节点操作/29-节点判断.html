@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box" onclick="alert('1');">
+    <p>段落1</p>
+    <p id="p2">段落2</p>
+    <p>段落3</p>
+    <p>段落4</p>
+</div>
+<div id="demo">
+
+</div>
+<script src="../common.js"></script>
+<script>
+    let box = $("box");
+    let p2 = $("p2");
+    let demo = $("demo");
+    //1. 判断是否有子节点
+    console.log(box.hasChildNodes());//true
+    console.log(demo.hasChildNodes());//true
+
+    console.log(box.firstChild !== null);//true
+    console.log(demo.firstChild !== null);//true
+    //判断是否有子元素
+    console.log(demo.firstElementChild !== null);//false
+
+    console.log(box.childNodes.length > 0);//true
+    console.log(demo.childNodes.length > 0);//true
+    //判断是否有子元素
+    console.log(demo.children.length > 0);//false
+
+    //2. 判断是否包含某个子节点
+    console.log(box.contains(p2));//true
+    console.log(demo.contains(p2));//false
+</script>
+</body>
+</html>

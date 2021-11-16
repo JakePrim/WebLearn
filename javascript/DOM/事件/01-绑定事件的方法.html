@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" id="btn" value="点击">
+<input type="button" id="btn2" value="点击2">
+<script>
+    let btn = document.getElementById("btn");
+    let btn2 = document.getElementById("btn2");
+    btn.addEventListener("click", function () {
+        alert(1);
+    });
+    //事件排队 依次执行
+    btn.addEventListener("click", function () {
+        alert(2);
+    })
+    btn.addEventListener("click", f);
+
+    function f() {
+        alert(3);
+    }
+
+    //只兼容IE10及以下，IE8以下及以下的浏览器在处理事件队列时会出现顺序错乱
+    // btn2.attachEvent("onclick",function () {
+    //     alert(4);
+    // });
+
+    function addEvent(ele, type, fn) {
+        if (ele.addEventListener){
+            ele.addEventListener(type,fn);
+        }else if (ele.attachEvent){
+            ele.attachEvent("on"+type,fn);
+        }else{
+            throw Error("this is ele not support event listener");
+        }
+    }
+    addEvent(btn2,"click",function () {
+        alert(5);
+    })
+</script>
+</body>
+</html>

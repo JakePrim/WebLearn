@@ -1,0 +1,10 @@
+html {
+  font-size: 50px;
+}
+div {
+  width: 4rem;
+  /*最终单位为第一个数字的单位*/
+  height: 6rem;
+  /*注意less 4.0版本除法运算需要加上括号 计算推荐的写法 否则不生效*/
+  background-color: #666666;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p id="para">text1</p>
+    <p id="box">text2</p>
+    <p>text3</p>
+    <p>text4</p>
+    <!-- html的渲染顺序，如果要操作否个节点，需要将js写在渲染节点的后面才可以操作元素，
+     必须保证元素在浏览器渲染成功-->
+    <script>
+        //js更能体现id的唯一性，如果存在相同的id就会报错
+        let paraNode = document.getElementById("para");
+        console.log(paraNode);//<p id="para">text1</p> object类型
+        console.dir(paraNode);//打印具体的对象
+        paraNode.style.background = "red";//给para节点 动态添加样式
+        //可直接通过id访问节点，不推荐直接使用id名
+        // box.style.background = "blue";
+    </script>
+</body>
+</html>

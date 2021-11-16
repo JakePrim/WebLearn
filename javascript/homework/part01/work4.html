@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var week = 2; //今天是星期二
+      var day = parseInt(prompt("请输入天数"));
+      if (day <= 0) {
+        alert("请输入大于0的天数，今天是：星期" + week);
+      } else if (day > 0 && day <= 7 - week) {
+        alert(day + "天，之后是:星期" + (day + week));
+      } else {
+        let d = day - (7 - week);//17 - 5 = 12
+        alert(day + "天，之后是：星期:" + (d % 7));
+      }
+    </script>
+  </body>
+</html>

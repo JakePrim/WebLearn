@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 要求当前网页使用IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <title>Document</title>
+    、
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+
+    <style>
+      .btn-custom {
+        background-color: pink;
+      }
+      .container > .row > div {
+        border: 1px solid red;
+        height: 50px;
+      }
+      .test div{
+          height: 40px;
+          border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button type="button" class="btn btn-primary btn-custom">按钮1</button>
+      <!-- 栅格系统 col-lg 大屏幕 md sm xs -->
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6"></div>
+      </div>
+      <!-- 超出自动换行 -->
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-6"></div>
+      </div>
+      <!-- 列嵌套 -->
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="row test">
+            <!-- 将父元素平分为12份 -->
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"></div>
+          </div>
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"></div>
+      </div>
+      <!-- 栅格偏移 向右偏移-->
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 col-lg-offset-4"></div>
+      </div>
+      <!-- 栅格排序 -->
+      <div class="row">
+          <!-- push 往右推 -->
+        <div class="col-md-9 col-md-push-3">col-md-9 col-md-push-3</div>
+        <!-- pull 往左拉 -->
+        <div class="col-md-3 col-md-pull-9">col-md-3 col-md-pull-9</div>
+      </div>
+    </div>
+  </body>
+</html>

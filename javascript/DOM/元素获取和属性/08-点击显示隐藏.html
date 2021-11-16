@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="点击隐藏" id="btn">
+<div id="box"></div>
+<script>
+    let btn = document.getElementById("btn");
+    let box = document.getElementById("box");
+    //更改css样式 添加类名
+    btn.onclick = function () {
+        //在事件函数内部 有一个this指向事件源 btn
+        if (this.value === "点击隐藏"){
+            box.className = "hide";
+            this.value = "点击显示";
+        }else{
+            box.className = "show";
+            this.value = "点击隐藏";
+        }
+    }
+    //普通函数 -> window 对象
+    //构造函数 -> 指向的是生成的实例对象
+    //对象的方法 -> 指向的是对象本省
+    //事件函数 -> 指向的是事件源
+</script>
+</body>
+</html>

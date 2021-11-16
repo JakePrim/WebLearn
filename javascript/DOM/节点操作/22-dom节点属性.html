@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">div 1</div>
+<script>
+    //注意每个节点都有：nodeType nodeName  nodeValue
+    //元素节点
+    let box = document.getElementById("box");
+    console.dir(box);
+    console.log(box.nodeName);
+    console.log(box.nodeValue);
+    console.log(box.nodeType);
+
+    //属性节点
+    let lgNode = box.getAttributeNode("id");
+    console.dir(lgNode);
+    //nodeValue可以更改 结果从div id = "box" -> div id="demo"
+    lgNode.nodeValue = "demo"
+
+    //文本节点
+    let childNodes = box.childNodes;
+    console.log(childNodes);
+    childNodes[0].nodeValue = "box 1";
+</script>
+</body>
+</html>

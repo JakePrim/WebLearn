@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box1">
+    <p>1</p>
+    <p class="para">para</p>
+    <p class="para">para3</p>
+    <p>4</p>
+</div>
+<div id="box2">
+    <p>1</p>
+    <p class="para">para</p>
+    <p class="para">para2</p>
+    <p>4</p>
+</div>
+<script>
+    //必须在HTML渲染完毕后 使用，不能提前加载
+    //querySelector 通过css中的选择器选取第一个符合条件的标签元素
+    let para = document.querySelector("#box1 .para");
+    console.log(para);
+
+    //querySelectorAll 通过css中的选择器去选取所有符合条件的标签元素
+    let paras = document.querySelectorAll("#box1 .para");//返回是NodeList 节点列表 注意只有HTMLCollection可以提前加载，只有个HTMLCollection
+    //才会动态增加
+    console.log(paras);
+
+
+    //兼容问题：不支持IE8及以下的浏览器
+</script>
+</body>
+</html>

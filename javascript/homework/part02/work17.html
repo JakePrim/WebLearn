@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script>
+      //[3,4,1,2,6,5] ---> [1,2,3,4,5,6]
+      function sort(arr){
+          arr.sort(function (v1, v2) {
+              if (v1 < v2){
+                  return -1;
+              } else if(v1 > v2){
+                  return 1;
+              }else{
+                return 0;
+              }
+          });
+          return arr;
+      }
+
+      console.log(sort([3,4,1,2,6,5]));
+  </script>
+</body>
+</html>

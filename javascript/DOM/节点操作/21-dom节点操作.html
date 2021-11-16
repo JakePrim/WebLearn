@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">div1</div>
+<div id="demo">
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+    <div class="inner">
+        <p>inner p</p>
+    </div>
+</div>
+<script>
+    let newNode = document.createElement("div");
+    newNode.innerHTML = "新的div";
+    //给body添加节点
+    document.body.appendChild(newNode);
+
+    //移除子节点
+    let box = document.getElementById("box");
+    document.body.removeChild(box);
+
+    //获取节点的子元素节点
+    let demo = document.getElementById("demo");
+    let child1 = demo.children;//返回的是HTMLConnection 类数组
+    console.log(child1);
+</script>
+</body>
+</html>

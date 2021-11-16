@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="">
+    <input type="radio" name="age">0-10<br>
+    <input type="radio" name="age">11-10<br>
+    <input type="radio" name="age">12-10<br>
+</form>
+<div id="age">年龄</div>
+<script>
+//getElementsByName 不建议使用：在IE Opera有兼容问题
+let ages = document.getElementsByName("age");//返回NodeList 节点列表集合 也是一个类数组
+console.log(ages);
+//兼容问题 会多选中id属性值相同的部分
+</script>
+</body>
+</html>

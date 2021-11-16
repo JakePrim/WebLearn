@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../common.js"></script>
+    <style>
+        .bg{
+            background-color: pink;
+        }
+        .cls{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<div id="box" style="width: 100px" class="bg">box</div>
+<script>
+    let btn = $("btn");
+    let box = $("box");
+    //返回了一个CSSStyleDeclaration对象，里面有各种样式的设置
+    console.log(btn.style);
+    //行内的样式 属性
+    console.log(box.style);
+    // box.style.width = "200px";
+    // box.style.height = "100px";
+    // box.style.background = "red";//行内样式的优先级 要高于 内嵌和外链的样式设置
+    console.log(box.style.backgroundColor);//同时只能获取到行内样式的属性
+
+    //也可以通过更改类名的方式修改样式
+    btn.className = "bg";
+
+    btn.onclick = function () {
+        box.className = "cls";//更推荐使用类名修改样式
+    }
+
+</script>
+</body>
+</html>

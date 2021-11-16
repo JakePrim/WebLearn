@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        td {
+            width: 100px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<table border="1" style="border-collapse: collapse">
+    <tbody id="tb">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+<script src="../common.js"></script>
+<script>
+    //获取父级元素
+    let tb = $("tb");
+    //获取所有的子元素节点
+    let trs = tb.children;
+    for (let i = 0; i < trs.length; i++) {
+        if (i % 2 === 0) {
+            //偶数项
+            trs[i].style.backgroundColor = "pink";
+        } else {
+            trs[i].style.backgroundColor = "skyblue";
+        }
+    }
+
+</script>
+</body>
+</html>

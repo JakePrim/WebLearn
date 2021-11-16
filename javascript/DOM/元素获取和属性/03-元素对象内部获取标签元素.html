@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box1">
+        <p>of box1 1</p>
+        <p>of box1 2</p>
+        <p>of box1 3</p>
+        <p>of box1 4</p>
+    </div>
+    <div id="box2">
+        <p>of box2 1</p>
+        <p>of box2 2</p>
+        <p>of box2 3</p>
+        <p>of box2 4</p>
+    </div>
+    <!-- html的渲染顺序，如果要操作否个节点，需要将js写在渲染节点的后面才可以操作元素，
+     必须保证元素在浏览器渲染成功-->
+    <script>
+        //类似css的后代选择器
+        let box1 = document.getElementById("box1");
+        //在box1的内部查找p标签元素
+        let box1_ps = box1.getElementsByTagName("p");
+        console.log(box1_ps);
+        box1_ps[1].style.background = "pink";
+    </script>
+</body>
+</html>

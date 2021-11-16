@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //除了正常的加减乘除取余运算 特殊值的字面量参与运算
+        //NaN参与的运算永远都是NaN
+        // console.log(NaN+2);//NaN
+        // //Infinity参与运算
+        // console.log(Infinity+5);//Infinity
+        // console.log(Infinity-5);//Infinity
+        // console.log(Infinity*5);//Infinity
+        // console.log(Infinity/5);//Infinity
+        // console.log(Infinity%5);//值无法确定就是：NaN
+
+        // console.log(-Infinity+5);//-Infinity
+        // console.log(-Infinity-5);//-Infinity
+        // console.log(-Infinity*5);//-Infinity
+        // console.log(-Infinity/5);//-Infinity
+        // console.log(-Infinity%5);//NaN
+
+        // console.log(5/Infinity);//无限接近于0 输出：0
+        // console.log(5%Infinity);//5 除不尽自己当做余数余出来了
+
+        // console.log(Infinity + Infinity);//Infinity
+        // console.log(Infinity - Infinity);//NaN 值不确定
+        // console.log(Infinity * Infinity);//Infinity
+        // console.log(Infinity / Infinity);//NaN 值不确定
+        // console.log(Infinity % Infinity);//NaN 值不确定
+
+        console.log(1 + "2");//字符串12
+        console.log(1 - "2");//-1
+        console.log(1 * "2");//2
+        console.log(1 / "2");//0.5
+        console.log(1 % "2");//1
+
+        console.log(1 - " ");//1-0 = 1
+        console.log(1 - "123abc");//1- NaN = NaN
+
+        console.log(1 + true);//1+1 = 2
+        console.log(1 + false);//1+0 = 1
+
+        console.log(1+undefined);//1+NaN=NaN
+        console.log(1+null);//1+0 = 1
+    </script>
+</body>
+</html>

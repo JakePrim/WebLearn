@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script>
+      /**
+       * 输入：[7, 1, 5, 3, 6, 4]
+       7:0
+       1:1
+       5:2
+       3:3
+       6:4
+       4:5
+       输出：5
+
+       解释：在第2天（当天股票价格等于1）的时候买入，在第五天（当天股票价格等于6）的时候卖出，最大利润为 6 - 1 = 5。
+
+       注意：利润不能使7 - 1 = 6，因为第二天的价格为1，第一天的价格为7，你是不可能在第二天买入股票然后等到第一天卖出的
+       */
+      function f(arr) {
+          let sum = 0;
+          let start;
+          let end;
+          for (let i = 0; i < arr.length-1; i++) {
+              for (let j = i+1; j < arr.length; j++) {
+                  let p = (arr[j] - arr[i]);
+                  if (sum < p){
+                      sum = p;
+                      start = i+1;
+                      end = j+1;
+                  }
+              }
+          }
+          console.log(`第 ${start}天买入，第${end}天卖出,利润最大${sum}`)
+      }
+      f([7, 1, 5, 3, 6, 4])
+  </script>
+</body>
+</html>

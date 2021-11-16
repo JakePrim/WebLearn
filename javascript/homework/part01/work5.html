@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var result = parseInt(prompt("请输入一个三位数"));
+        if (result < 100) {
+            alert("必须是三位数");
+        }else{
+            let a = parseInt(result / 100);//百位
+            let b = parseInt(result / 10 % 10);//十位
+            let c = parseInt(result % 10);
+            alert(a+b+c);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #pic {
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+<img src="../images/tianshi.gif" alt="" id="pic">
+<script>
+    let pic = document.getElementById("pic");
+    //给整个文档添加鼠标移动事件
+    document.onmousemove = function (e) {
+        //更改left 和 top值
+        e = e || window.event;
+        pic.style.left = e.clientX + "px";
+        pic.style.top = e.clientY + "px";
+    }
+
+</script>
+</body>
+</html>

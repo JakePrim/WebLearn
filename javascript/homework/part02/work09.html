@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function rightchange(char,n){
+            let arrStr = char.split("");
+            //优化n > len  n - len = 20 - 7 = 13 - 7 = 6
+            let len = char.length;
+            while (n > len){
+                n = n - len;
+            }
+            for (let i = 0; i < n; i++) {
+                let v = arrStr.pop();
+                arrStr.unshift(v);
+            }
+            return arrStr.join("")
+        }
+
+        console.log(rightchange("abcdefg",2));
+        console.log(rightchange("abcdefg",3));
+        console.log(rightchange("abcdefg",4));
+        console.log(rightchange("abcdefg",20));
+        console.log(rightchange("abcdefg",6));
+    </script>
+</body>
+</html>

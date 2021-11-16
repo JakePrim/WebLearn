@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="box" onclick="alert('1');">
+    <p>段落1</p>
+    <p id="p2">段落2</p>
+    <p>段落3</p>
+    <p>段落4</p>
+</div>
+<script src="../common.js"></script>
+<script>
+    let box = $("box");
+    let p2 = $("p2");
+    //浅克隆
+    let newBox = box.cloneNode(false);
+    document.body.appendChild(newBox);
+    //深克隆
+    let newBox2 = box.cloneNode(true);
+    document.body.appendChild(newBox2);
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #images{
+            margin: 10px;
+        }
+        #images a{
+            display: block;
+            float: left;
+            margin-right: 10px;
+        }
+        #pic{
+            margin-left: 10px;
+            width: 450px;
+        }
+    </style>
+</head>
+<body>
+<div id="images">
+    <a href="../images/1.jpg" title="A">
+        <img src="../images/1-small.jpg" alt="1">
+    </a>
+    <a href="../images/2.jpg" title="B">
+        <img src="../images/2-small.jpg" alt="2">
+    </a>
+    <a href="../images/3.jpg" title="C">
+        <img src="../images/3-small.jpg" alt="3">
+    </a>
+    <a href="../images/4.jpg" title="D">
+        <img src="../images/4-small.jpg" alt="4">
+    </a>
+</div>
+<div style="clear: both"></div>
+<img id="pic" src="../images/placeholder.png" alt="">
+<p id="desc"></p>
+<script>
+    let images = document.getElementById("images");
+    let pic = document.getElementById("pic");
+    let desc = document.getElementById("desc");
+    let as = images.getElementsByTagName("a");
+    for (let i = 0; i < as.length; i++) {
+        as[i].onclick = function () {
+            //注意这里使用this不要使用变量i 函数执行时已经在循环结束之后i是循环完毕后的值就是i=as.length,
+            //但是let会形成独立的块级作用域
+            /**
+             * {
+             *     let i= 0
+             *     a[0].onclick = function(){}
+             * }
+             * {
+             *     let i = 1;
+             *     a[1].onclick = function(){}
+             * }
+             * ......
+             */
+            console.log(i);
+            desc.innerText = this.title;
+            pic.src= this.href;
+            return false;//返回false 取消a标签的默认事件
+        }
+    }
+</script>
+</body>
+</html>

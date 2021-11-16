@@ -1,0 +1,185 @@
+/*更改容器的最大的尺寸*/
+@media screen and (min-width:1280px) {
+    .container{
+        width: 1280px;
+    }
+}
+
+body{
+    background-color: #f5f5f5;
+}
+
+header{
+    padding-left: 0 !important;
+}
+
+/*bootstrap container初始化设置 */
+.container{
+    background-color: #fff;
+}
+
+header .logo{
+    background-color: #6c94b5;
+    margin: 0;
+    padding: 0;
+}
+
+header .logo a{
+    display: block;
+}
+/* header .logo a img{
+    display: block;
+    width: 100%;
+} */
+
+header .logo a span{
+    display: block;
+    height: 50px;
+    font-size: 18px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+}
+
+header nav{
+    background-color: #eee;
+    border-bottom: 1px solid #ccc;
+}
+
+header nav a{
+    display: block !important;
+    height: 50px;
+    padding-left: 30px;
+    color: #666;
+    font-size: 16px;
+    line-height: 50px !important;
+}
+
+/*伪类设置*/
+header nav a:hover{
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+}
+
+/*伪元素设置*/
+header nav a::before{
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.news {
+    border-bottom: 1px solid #ccc;
+}
+.news li{
+    float: left;
+    height: 128px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    width: 25%;
+}
+
+.news li:nth-child(1){
+    width: 50%;
+    height: 266px;
+}
+
+.news li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.news li a img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.news li a p{
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 41px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0;
+}
+
+.news li:nth-child(1) a p{
+    font-size: 20px;
+    line-height: 41px;
+    padding: 0 10px;
+}
+
+.publish .publish-box{
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.publish .publish-box img{
+    padding-top: 10px;
+}
+
+aside .banner{
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+aside .hot{
+    display: block;
+    border: 1px solid #ccc;
+    padding: 0 20px 20px;
+}
+
+aside .hot:hover{
+    text-decoration: none;
+}
+
+aside .hot button{
+    border-radius: 0;
+    margin-bottom: 10px;
+}
+
+aside .hot p{
+    font-size: 12px;
+}
+
+/*小屏幕及以上*/
+@media screen and (min-width:768px) {
+   header .logo img{
+       margin: 0 auto;
+   } 
+}
+
+/*超小屏幕及小屏幕*/
+@media screen and (max-width: 991px) {
+    header nav a{
+        float: left;
+        width: 20%;
+    }
+}
+
+/*超小屏幕*/
+@media screen and (max-width: 767px){
+    header nav a{
+        font-size: 14px;
+    }
+    .news li{
+        width: 50%;
+    }
+    .news li:nth-child(1){
+        width: 100%;
+    }
+
+    .publish .publish-box h3{
+        font-size: 16px;
+    }
+
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>em 设置父元素的字体大小的倍数</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            font-size: 20px;
+        }
+        p{
+            /*em ：相对单位，参考父级元素的字号大小的倍数，例如：5em 表示为字号的5倍*/
+            width: 5em;/**5*20 = 100px**/
+            height: 40px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p></p>
+    </div>
+</body>
+</html>

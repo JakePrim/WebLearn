@@ -1,0 +1,9 @@
+html {
+  font-size: 50px;
+}
+div {
+  width: 200rem / 50px;
+  /*最终单位为第一个数字的单位*/
+  height: 300rem / 50px;
+  background-color: #999;
+}

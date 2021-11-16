@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num = parseInt(prompt("请输入一个数"))
+        if (num <= 1) {
+            alert("质数必须大于1")
+        }
+        var result = 0;
+        for (let index = 1; index <= num; index++) {
+            if (num % index ==0) {
+                result++;
+            }
+        }
+        if (result == 2) {
+            alert("是质数")
+        }else{
+            alert("不是质数")
+        }
+    </script>
+</body>
+</html>

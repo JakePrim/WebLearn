@@ -1,0 +1,17 @@
+//less 运算
+@baseFont: 50px;
+
+html {
+  font-size: @baseFont;
+}
+
+div {
+  // width: 200px + 50;
+  // height: 200px * 1.5;
+  width: 200rem / @baseFont; /*最终单位为第一个数字的单位*/
+  height: 300rem / @baseFont;
+  background-color: #999;
+}
+
+//1. 参与运算的两个数字可以一个有单位，一个没有单位，最终单位就是唯一的那个单位
+//2. 参与运算的两个数字，两个都有单位，最终单位取第一个数字的单位

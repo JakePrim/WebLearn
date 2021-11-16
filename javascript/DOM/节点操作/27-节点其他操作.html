@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <p>1</p>
+    <p id="p2">2</p>
+    <p>3</p>
+    <p>4</p>
+</div>
+<script>
+  let newDiv = document.createElement("div");
+  console.dir(newDiv);
+  let csl = document.createAttribute("class");//创建一个新的属性节点
+  console.dir(csl);
+
+  let ext = document.createTextNode("我是新创建的文本节点");//创建文本节点
+  console.dir(ext);
+  //创建的节点 并没有添加到DOM树上
+
+  let box = document.getElementById("box");
+
+
+  //添加新的节点
+  box.appendChild(newDiv);
+
+  //创建的节点，也可以添加子节点
+  newDiv.appendChild(ext);
+
+  //将newDiv 替换了p2
+  let p2 = document.getElementById("p2");
+
+  //替换节点
+  // box.replaceChild(newDiv,p2);
+
+  //插入节点操作
+  // box.insertBefore(newDiv,p2);
+  box.insertBefore(newDiv,null);//null 则会在最后插入
+
+  //移除子节点
+  box.removeChild(p2);//p2 是存在在父级中，如果没有则无法移除
+
+
+</script>
+</body>
+</html>

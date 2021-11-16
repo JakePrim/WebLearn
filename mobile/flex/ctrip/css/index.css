@@ -1,0 +1,393 @@
+body {
+  max-width: 540px;
+  min-width: 320px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  background: #f2f2f2;
+  color: #000;
+  -webkit-tap-highlight-color: transparent;
+  font: normal 16px/1.5 PingFangSC-regular, Tahoma, Lucida Grande, Verdana,
+    Microsoft Yahei, STXihei, hei;
+}
+
+/*点击高亮需要清除 设置为透明*/
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*在IOS上加上这个属性才能设置input自定义样式*/
+input {
+  -webkit-appearance: none;
+}
+
+/*禁用长按页面时弹出菜单*/
+img,
+a {
+  -webkit-touch-callout: none;
+}
+
+a{
+  color: #222222;
+  text-decoration: none;
+}
+ul,li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+h1,h2,h3,h4,h5,h6{
+  margin: 0;
+  padding: 0;
+}
+
+/*搜索框样式部分*/
+.search-box {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center; /*单行侧轴排列方式*/
+  width: 100%;
+  height: 45px;
+  box-sizing: border-box;
+  padding-left: 12px;
+}
+
+
+
+.search-box .login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 51px;
+  height: 44px;
+  padding-right: 4px;
+}
+
+.search-box .login::after{
+  content: '';
+  display: block;
+  width: 22px;
+  height: 22px;
+  /*2倍精灵图 -> 缩放1/2,记录大小 -> 量取位置 */
+  background: url(../images/sprite.png) no-repeat 0px -36px;
+  background-size: 21px auto;
+  order: -1;/*排在span的前面修改order 数值越小越靠前*/
+}
+
+.search-box .login span{
+  font-size: 12px;
+  line-height: 12px;
+  color:#fff;
+}
+
+.search-box .search {
+  display: flex;
+  align-items: center; /*侧轴单行居中排列*/
+  flex: 1;
+  height: 28px;
+  padding: 2px 5px;
+  border-radius: 16px;
+  box-sizing: border-box; /*改变box盒模型向内扩充*/
+  background-color: #fff;
+}
+
+.search-box .search span {
+  padding-left: 35px;
+  line-height: 18px;
+  font-size: 15px;
+  color: #666;
+  position: relative;
+}
+
+.search-box .search span::after{
+  content: '';
+  width: 14px;
+  height: 14px;
+  display:block;
+  position:absolute;
+  background:url(../images/sprite.png) no-repeat 0px 0px;
+  background-size: 21px auto;
+  left: 10px;
+  top: 2px;
+}
+
+/*焦点图部分*/
+/*
+25% 100%(75%显示在屏幕范围内)  25%
+假设：
+100 400 100
+transform:translateX 参考整个盒子的总大小所有的百分比150% = 600
+也就是600，如果移动600的25%就是=150 多出了50 我们应该移动100,100/600 * 100 = 16% 
+*/
+.focus{
+  position: relative;
+  width: 100%;
+  padding: 0 25%;
+  overflow: hidden;
+  transform: translateX(-16.66%);
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
+
+.focus a{
+  display:block;
+}
+.focus a img{
+  width: 100%;
+  display: block;
+}
+
+/*设置遮盖阴影 绝对定位脱离了标准文档流，会压盖在普通文档流的上面*/
+.focus::after{
+  content:'';
+  display:block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-image: linear-gradient(to bottom,rgba(0,0,0,0.4),rgba(0,0,0,0));
+}
+
+/*
+local-nav部分
+*/
+.local-nav{
+  display:flex;
+  height: 64px;
+  position: relative;/*压盖前面的部分效果*/
+  margin: -52px 12px 10px;
+  padding: 4px 0 8px;/*让内容自动撑开高度*/
+  background: #fff;
+  border-radius: 8px;
+}
+
+/*li平分布局*/
+.local-nav li{
+  flex:1;
+}
+
+.local-nav li a{
+  display:flex;
+  width: 100%;
+  flex-direction: column;/*垂直布局*/
+  align-items: center;/*侧轴居中*/
+}
+
+.local-nav li a i{
+  width: 40px;
+  height: 40px;
+  background: url(../images/localnav_bg.png) no-repeat 0 0;
+  background-size: 40px auto;
+}
+
+.local-nav li:nth-child(2) a i{
+  background-position: 0 -40px;
+}
+.local-nav li:nth-child(3) a i{
+  background-position: 0 -80px;
+}
+.local-nav li:nth-child(4) a i{
+  background-position: 0 -120px;
+}
+.local-nav li:nth-child(5) a i{
+  background-position: 0 -160px;
+}
+
+.local-nav li a span{
+  font-size: 12px;
+}
+
+/*nav部分*/
+.nav{
+  margin: 0 12px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.nav .nav-common{
+  display: flex;
+  background-image: linear-gradient(to right,#4b8fed,#53bced);
+  border-bottom: 1px solid #fff;
+}
+.nav .nav-common:nth-child(3){
+  border-bottom: 0;
+}
+
+.nav .nav-common a{
+  color: #fff;
+  line-height: 14px;
+  font-size: 14px;
+  padding: 25.6px 0;
+}
+
+.nav .nav-common a:nth-child(1){
+  flex: 1.347;
+  padding-left: 12px;
+  background: url(../images/flight.png) no-repeat right bottom;
+  background-size: 80px auto;
+}
+
+.nav .nav-common a:nth-child(2){
+  background: url(../images/train.png) no-repeat left bottom;
+  background-size: 37px auto;
+}
+
+.nav .nav-common a:nth-child(n+2){
+  flex: 1;
+  text-align: center;
+  border-left: 1px solid #fff;
+}
+
+/*特定样式更新*/
+.nav .nav-common:nth-child(1) a:nth-child(3){
+  flex: 2.009;
+  /*background-image可以设置多个背景，先写的背景 压盖后写的背景*/
+  background-image: url(../images/hot_sale.png), linear-gradient(to right,#ffbc49,#ffd252);
+  background-size: 161px auto;
+  background-position: right bottom;
+  color: #a05416;
+}
+
+.nav .nav-common:nth-child(1) a:nth-child(1){
+  background-image: url(../images/hotel.png);
+  background-size: 73px auto;
+}
+
+.nav .nav-common:nth-child(1) a:nth-child(2){
+  background-image: url(../images/minsu.png);
+  /*bgs:和公共样式一致*/
+}
+
+.nav .nav-common:nth-child(1){
+  background-image: linear-gradient(to right,#fa5a56,#fb8550 56%);
+}
+
+.nav .nav-common:nth-child(3) a:nth-child(1){
+  background-image: url(../images/travel.png);
+  background-size: 93.5px auto;
+}
+
+/* .nav .nav-common:nth-child(3) a:nth-child(2){
+  background-image: url(../images/train.png);
+} */
+
+/*sub nav 样式部分*/
+.subnav-entry{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 12px 12px;
+}
+
+.subnav-entry li{
+  width:20%;/*设置宽度百分比 实现换行的效果 子元素撑开高度*/
+}
+
+.subnav-entry li a{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.subnav-entry li a i{
+  width: 28px;
+  height: 28px;
+  margin: 10px 0 5px;
+  background: url(../images/subnav-bg.png) no-repeat 6px -137px;
+  background-size: 24px auto;
+}
+
+/* 热门活动顶部部分 */
+.sales-box{
+  border-top: 1px solid   #dbdbdb;
+}
+.sales-box .sales-hd{
+  display: flex;
+  justify-content: space-between;/*主轴 两侧排列*/
+  align-items: center;/*侧轴居中排列*/
+  padding: 0 8px 1px;
+  height: 45px;
+  border-bottom: 1px solid #dbdbdb;
+  background: #fff;
+}
+
+.sales-box .sales-hd h2{
+  width: 79px;
+  height: 15px;
+  background: url(../images/hot.png) no-repeat 0 -20px;
+  background-size: 79px auto;
+  position: relative;
+}
+
+.sales-box .sales-hd h2 i{
+  position: absolute;
+  width: 36px;
+  height: 15px;
+  background:url(../images/icon-gg@2x.png) no-repeat;
+  background-size: 36px auto;
+  right: -40px;
+  top: 0;
+}
+
+.sales-box .sales-hd .more{
+  height: 20px;
+  padding: 0 18px 0 12px;
+  border-radius: 10px;
+  background-image: linear-gradient(to right,#dc5569, #e068c4);
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  position: relative;
+}
+.sales-box .sales-hd .more::after{
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transform: rotate(45deg);
+  right: 9px;
+  top: 5px;
+}
+
+.sales-box .sales-bd{
+  display: flex;
+  width: 100%;
+}
+
+.sales-box .sales-bd a{
+  flex: 1;
+  border-top: 2px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  position: relative;
+}
+
+.sales-box .sales-bd a:nth-child(1){
+  border-right: 1px solid #fafafa;
+}
+
+.sales-box .sales-bd a img{
+  display: block;
+  width: 100%;
+}
+
+
+.sales-box .sales-bd a span{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 26px;
+  height: 14px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 14px;
+  background: #b3b3b3;
+  border-top-right-radius: 4px;
+}

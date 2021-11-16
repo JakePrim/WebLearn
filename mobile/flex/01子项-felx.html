@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        section{
+            display: flex;
+            height: 80px;
+            margin: 50px auto;
+            background-color: pink;
+        }
+
+        section div:nth-child(1),section div:nth-child(3){
+            width: 80px;
+            height: 80px;
+            background-color: skyblue;
+        }
+
+        section div:nth-child(2){
+            flex: 1;
+        }
+
+        .box{
+            display: flex;
+            height: 80px;
+            margin: 50px auto;
+            background-color: pink;
+        }
+
+        .box span{
+            flex: 1;
+        }
+
+        .box span:nth-child(2){
+            flex: 2;/*占2份*/
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 和Android中的widget类似 占用的权重 -->
+    <section>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </section>
+    <div class="box">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+</html>

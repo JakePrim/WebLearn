@@ -1,0 +1,278 @@
+/*通过媒体查询限制最大到750px 字号始终是75px*/
+
+/* 给 body 进行样式初始化 */
+body {
+  min-width: 320px;
+  max-width: 540px;
+  margin: 0 auto;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: -apple-system,Helvetica,sans-serif;
+}
+/*点击高亮我们需要清除清除 设置为transparent 完成透明*/
+*{
+  -webkit-tap-highlight-color: transparent;
+}
+/*在移动端浏览器默认的外观在iOS上加上这个属性才能给按钮和输入框自定义样式*/
+input{
+  -webkit-appearance: none;
+}
+/*禁用长按页面时的弹出菜单*/
+img,a { -webkit-touch-callout: none; }
+
+/* 制作顶部提示部分 */
+.top-tips {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 45px;
+  background-color: #333;
+  line-height: 45px;
+  text-align: center;
+  color: #fff;
+}
+.top-tips div:nth-child(1) {
+  float: left;
+  width: 8%;
+}
+.top-tips div:nth-child(1) img {
+  width: 10px;
+  vertical-align: middle;
+}
+.top-tips div:nth-child(2) {
+  float: left;
+  width: 10%;  
+}
+.top-tips div:nth-child(2) img {
+  width: 30px;
+  vertical-align: middle;
+}
+.top-tips div:nth-child(3) {
+  float: left;
+  width: 57%;
+}
+.top-tips div:nth-child(4) {
+  float: left;
+  width: 25%;
+  height: 45px;
+  background-color: #f63515;
+}
+
+/* 搜索框 */
+.search-box {
+  position: fixed;
+  top: 45px;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  z-index: 20;
+}
+.search-box .search-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 44px;
+}
+.search-box .search-btn span {
+  display: block;
+  width: 20px;
+  height: 18px;
+  margin: 14px 0 0 15px;
+  background: url(../images/s-btn.png) no-repeat 0 0;
+  background-size: 20px 18px;
+}
+.search-box .login {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 44px;
+  line-height: 44px;
+  color: #fff;
+  text-align: left;
+}
+.search-box .search {
+  position: relative;
+  height: 30px;
+  margin: 7px 50px;
+  border-radius: 15px;
+  background-color: #fff;
+}
+.search-box .search span {
+  float: left;
+  position: relative;
+  width: 20px;
+  height: 15px;
+  margin: 8px 8px 0 15px;
+  background: url(../images/logo2.png) no-repeat 0 0;
+  background-size: 20px 15px;
+}
+.search-box .search span::after {
+  position: absolute;
+  right: -8px;
+  content: "";
+  width: 1px;
+  height: 15px;
+  background-color: #ccc;
+}
+.search-box .search i {
+  float: left;
+  width: 18px;
+  height: 15px;
+  margin: 8px 0 0 15px;
+  background: url(../images/jd-sprites.png) no-repeat -82px 0;
+  background-size: 200px 200px;
+}
+.search-box .search input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  padding: 0 20px 0 78px;
+  border: none;
+  background-color: transparent;
+  font-size: 12px;
+}
+
+/* 主要内容区域 */
+.content {
+  width: 100%;
+  margin-top: 45px;
+  background-color: #f6f6f6;
+}
+
+/* 焦点图区域 */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 187px;
+  overflow: hidden;
+}
+.banner .banner-bg {
+  position: absolute;
+  left: -25%;
+  width: 150%;
+  height: 145px;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  /* background-color: #f00; */
+  /* background-image: linear-gradient(to top, #f00, #0f0 25% 50%, #00f); */
+  background-image: linear-gradient(0deg,#f1503b,#c82519 50%);
+}
+/* 设置滑动轮播图的样式 */
+.banner ul {
+  position: relative;
+  margin: 0;
+  list-style: none;
+}
+.banner ul li {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 187px;
+  padding: 44px 3.333% 0;
+  box-sizing: border-box;
+}
+.banner ul li:nth-child(2) {
+  left: 100%;
+}
+.banner ul li:nth-child(3) {
+  left: 200%;
+}
+.banner ul li a {
+  display: block;
+}
+.banner ul li a img {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.banner ol{
+  list-style: none;
+  position: absolute;
+  bottom: 10px;
+  left: -40px;
+  width: 100%;
+  /*通过flex布局实现 圆点子元素居中显示*/
+  display: flex;
+  justify-content: center;/*主轴方向居中显示*/
+  margin: 0;
+}
+
+.banner ol li{
+  background-color: #fff;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+.banner ol li.current{
+  width: 10px;
+  background-color: red;
+}
+.banner ol li:nth-last-child(1){
+  margin-right: 0;
+}
+
+/* 优惠活动部分 */
+.youhui {
+  display: flex;
+}
+.youhui a {
+  flex: 1;
+}
+.youhui a img {
+  display: block;
+  width: 100%;
+}
+
+/* 导航部分 */
+nav {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 162px;
+  overflow: hidden;
+}
+
+nav a{
+  display: flex;
+  width: 20%;
+  flex-direction: column;
+  align-items: center;
+  color: #666;
+  text-decoration: none;
+  font-size: 12px;
+  justify-content: center;
+}
+
+nav a img{
+  width: 40px;
+  margin: 10px auto 0;
+}
+
+nav a span {
+  height: 18px;
+  margin-top: 6px;
+  line-height: 18px;
+}
+
+/* 新人专享 */
+.news {
+  margin: 10px;
+  display: flex;
+}
+.news a {
+  flex: 1;
+}
+.news a img {
+  display: block;
+  width: 100%;
+}

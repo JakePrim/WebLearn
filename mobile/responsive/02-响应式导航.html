@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* */
+        .nav{
+            margin: 0 auto;
+            width: 800px;
+            overflow: hidden;/*清除内部的浮动，可以被内部的子元素撑高*/
+            list-style: none;
+            background-color: green;
+        }
+        .nav li{
+            float: left;
+            width: 100px;
+            height: 30px;
+            font-size: 16px;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+        }
+        /*在小屏幕中要更改Nav容器的宽度 以及子元素的排列方式*/
+        @media screen and (max-width:799px) {
+            .nav{
+                width: 100%;
+            }
+            .nav li{
+                width: 33.33%;/*li每一行排列三个，宽度随着屏幕的变化而变化*/
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var count = 0
+        for (let index = 1000; index < 10000; index++) {
+            let ge = parseInt(index % 10);
+            let shi = parseInt(index / 10 % 10);
+            let bai = parseInt(index / 100 % 10);
+            if (index == Math.pow(ge,4)+Math.pow(shi,4)+Math.pow(bai,4)) {
+                console.log(index+" 是水仙花数");
+                count++;
+            }
+        }
+        console.log("一共有 "+count +" 个水仙花数");
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function perfectNumber(number) {
+        let result = 0;
+        for (let i = 1; i < number; i++) {
+            if (number % i === 0) {
+                result += i;
+            }
+        }
+        return result === number;
+    }
+
+    console.log(perfectNumber(6));
+    console.log(perfectNumber(10));
+    console.log(perfectNumber(16));
+    console.log(perfectNumber(18));
+</script>
+</body>
+</html>

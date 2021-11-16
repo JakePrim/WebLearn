@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+        .new {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 200px;
+            top: 200px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<div class="box" id="box"></div>
+<script src="../common.js"></script>
+<script>
+    let btn = $("btn");
+    let box = $("box");
+    btn.onclick = function () {
+        box.className = "new";
+    }
+</script>
+</body>
+</html>

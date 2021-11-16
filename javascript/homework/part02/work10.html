@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script>
+      function maxr(char){
+          //kkkkkccccbbbb
+         //将字符串转换为数组 0:k  1:k 将值和索引倒置简化计算 k:0  k:1
+          let arr = char.split("");
+          let obj = {};
+          let resObj = {};
+          for (let i = 0; i < arr.length; i++) {
+              if (!obj.hasOwnProperty(arr[i])){
+                  obj[arr[i]] = 1;
+                  resObj[arr[i]] = arr[i];
+              }else {
+                  obj[arr[i]]++;
+                  resObj[arr[i]]+=arr[i];
+              }
+          }
+          console.log(obj);
+          console.log(resObj);
+          //判断对象中值哪个最大
+          let sum = 0;
+          let key;
+          for (const objKey in obj) {
+              if (sum === 0){
+                  sum = obj[objKey];
+              }else{
+                  if (sum < obj[objKey]){
+                      sum = obj[objKey];
+                      key = objKey;
+                  }
+              }
+          }
+          console.log(sum,key);
+          return resObj[key];
+      }
+
+      console.log(maxr("mmmiijjjjkkkkkkssptr"))
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="选择" id="btn">
+<br>
+<select name="food" id="food">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+</select>
+<script>
+    let btn = document.getElementById("btn");
+    let food = document.getElementById("food");
+    let opts = food.getElementsByTagName("option");
+
+    btn.onclick = function () {
+        //随机选择一个opt
+        let index = Math.floor(Math.random() * opts.length);//向下取整
+        console.log(index);
+        opts[index].selected = true;
+    }
+</script>
+</body>
+</html>

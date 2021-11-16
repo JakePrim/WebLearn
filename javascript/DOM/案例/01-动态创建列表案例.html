@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>动态创建列表</h1>
+<div id="box">
+
+</div>
+<script src="../common.js"></script>
+<script>
+    let box = $("box");
+    let names = ["1","2","3","4"];
+
+    let ul = document.createElement("ul");
+    box.appendChild(ul);
+    for (let i = 0; i < names.length; i++) {
+        let li = document.createElement("li");
+        li.innerHTML = names[i];
+        ul.appendChild(li);
+    }
+</script>
+</body>
+</html>

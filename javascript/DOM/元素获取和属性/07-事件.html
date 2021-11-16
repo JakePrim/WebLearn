@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn" value="点击" onclick="alert('提示');"> <!-- 不推荐使用 -->
+<input type="button" id="btn2" value="点击">
+
+<img src="../images/a.jpg" alt="" id="img">
+<script>
+    let btn2 = document.getElementById("btn2");
+    let img = document.getElementById("img");
+    //添加绑定事件
+    btn2.addEventListener("click", function () {
+        //设置属性
+        let res = img.getAttribute("src");
+        console.log(res);
+        if (res === "images/a.jpg") {
+            img.setAttribute("src", "images/b.jpg")
+        } else {
+            img.setAttribute("src", "images/a.jpg")
+        }
+        // img.getAttribute(""); //获取元素属性
+    })
+</script>
+</body>
+</html>

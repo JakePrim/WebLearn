@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .bg {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="name"> <br>
+<input type="text" id="pw"> <br>
+<input type="button" id="btn" value="提交">
+<script>
+    let btn = document.getElementById("btn");
+    let username = document.getElementById("name");
+    let pw = document.getElementById("pw");
+
+    btn.onclick = function () {
+        //判断用户名 不满足需要高亮显示
+        if (username.value.length < 3 || username.value.length > 6) {
+            username.className = "bg";
+            return;
+        } else {
+            username.className = "";
+        }
+        if (pw.value.length < 6 || pw.value.length > 8) {
+            pw.className = "bg";
+            return;
+        } else {
+            pw.className = "";
+        }
+        console.log("提交数据库")
+    }
+</script>
+</body>
+</html>

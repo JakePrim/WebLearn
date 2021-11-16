@@ -1,0 +1,269 @@
+html {
+  font-size: 50px;
+  /*默认值就是50px*/
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 21.33333333px;
+  }
+}
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 384px) {
+  html {
+    font-size: 25.6px;
+  }
+}
+@media screen and (min-width: 400px) {
+  html {
+    font-size: 26.66666667px;
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 27.6px;
+  }
+}
+@media screen and (min-width: 424px) {
+  html {
+    font-size: 28.26666667px;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 32px;
+  }
+}
+@media screen and (min-width: 540px) {
+  html {
+    font-size: 36px;
+  }
+}
+@media screen and (min-width: 720px) {
+  html {
+    font-size: 48px;
+  }
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 50px;
+  }
+}
+body {
+  min-width: 320px;
+  width: 15rem;
+  margin: 0 auto;
+  line-height: 1.5;
+  font-family: Arial, Helvetica, STHeiTi, sans-serif;
+  background: #f2f2f2;
+}
+ul,
+ol {
+  list-style: 0;
+  margin: 0;
+  padding: 0;
+}
+/**
+*
+rem = 50
+750 * 50 / 50 = 750px = 15rem
+
+rem = 24
+750 * 24 / 50 = 360px = 15rem
+
+rem = 25
+750 * 25 / 50 = 375px = 15rem
+*/
+.top-banner {
+  position: relative;
+  width: 15rem;
+  height: 2rem;
+}
+.top-banner .top-banner-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.top-banner .top-banner-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.top-banner .close {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 0.5rem;
+  left: 0.1rem;
+  background: url(../images/close.png) no-repeat center center;
+  background-size: 0.6rem auto;
+}
+.header {
+  width: 15rem;
+  height: 3.6rem;
+  background: #ffdb47;
+}
+.header .header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 13.64rem;
+  height: 1.76rem;
+  padding: 0 0.68rem;
+}
+.header .header-top .classify img {
+  display: block;
+  width: 0.72rem;
+  height: 1.2rem;
+}
+.header .header-top .ad img {
+  display: block;
+  width: 9rem;
+  height: 1.1rem;
+  margin-right: 1rem;
+}
+.header .header-top .login img {
+  display: block;
+  width: 0.72rem;
+  height: 1.2rem;
+}
+.header .search {
+  width: 15rem;
+  height: 1.84rem;
+  padding: 0 0.48rem;
+  box-sizing: border-box;
+  position: relative;
+}
+.header .search a {
+  display: block;
+  position: absolute;
+  width: 14.04rem;
+  height: 1.76rem;
+  top: 0;
+  left: 0.48rem;
+}
+.header .search i {
+  width: 0.72rem;
+  height: 0.72rem;
+  position: absolute;
+  left: 0.84rem;
+  top: 0.52rem;
+  background: url(../images/search_btn.png) no-repeat 0 0;
+  background-size: 0.72rem auto;
+}
+.header .search form {
+  width: 14.04rem;
+  height: 1.76rem;
+  display: flex;
+  align-items: center;
+}
+.header .search form input {
+  width: 14.04rem;
+  height: 1.28rem;
+  box-sizing: border-box;
+  padding: 0.06rem 0.4rem 0 1.3rem;
+  border: 0;
+  font-size: 0.56rem;
+  line-height: 1.28rem;
+  border-radius: 0.64rem;
+}
+.banner {
+  width: 15rem;
+  height: 5.2rem;
+  background: url(../images/banner_bg.png) no-repeat 0 0;
+  background-size: 15rem auto;
+}
+.banner .wrapper {
+  width: 14.04rem;
+  height: 5.2rem;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+.banner .wrapper ul {
+  position: relative;
+  width: 40rem;
+  height: 5.2rem;
+}
+.banner .wrapper ul li {
+  position: absolute;
+  left: 14.04rem;
+  top: 0;
+  width: 14.04rem;
+  height: 5.2rem;
+  border-radius: 0.48rem;
+  overflow: hidden;
+}
+.banner .wrapper ul li.current {
+  left: 0;
+}
+.banner .wrapper ul li img {
+  display: block;
+  width: 14.04rem;
+  height: 5.2rem;
+}
+.banner .wrapper ol {
+  position: absolute;
+  width: 14.04rem;
+  margin: 0 auto;
+  display: flex;
+  bottom: 0.1rem;
+  justify-content: center;
+}
+.banner .wrapper ol li {
+  width: 0.16rem;
+  border-radius: 0.16rem;
+  height: 0.16rem;
+  background: #fff;
+  margin-right: 0.1rem;
+}
+.banner .wrapper ol li.current {
+  width: 0.3rem;
+}
+.banner .wrapper ol li:nth-child(6) {
+  margin-right: 0;
+}
+.ad {
+  width: 15rem;
+  display: flex;
+  margin-top: 0.2rem;
+}
+.ad a {
+  flex: 1;
+}
+.ad a img {
+  width: 100%;
+  height: 100%;
+}
+.nav {
+  width: 15rem;
+  height: 6.16rem;
+}
+.nav a {
+  float: left;
+  width: 3rem;
+  height: 2.84rem;
+  text-decoration: none;
+  color: #666;
+  font-size: 0.44rem;
+}
+.nav a p {
+  height: 0.56rem;
+  line-height: 0.56rem;
+  margin-top: 0.1rem;
+  text-align: center;
+}
+.nav a img {
+  display: block;
+  width: 1.68rem;
+  height: 1.68rem;
+  margin: 0.48rem 0.66rem 0;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入外部的js文件 -->
+    <script src="01.js"></script>
+    <!-- 内部书写js脚本 可以在任意位置 从上到下加载-->
+    <script type="text/javascript">
+        //单行注释
+        /**
+         * 块级注释
+         */
+        alert('hello');
+    </script>
+</head>
+<body>
+    <!-- 内嵌js脚本 -->
+    <input type="button" value="按钮" onclick="alert('弹窗');">
+    <!-- html是从上到下加载的，当input加载完毕才会加载下面的script脚本 -->
+    <script type="text/javascript">
+        //
+        alert('hello1');
+        //对话框
+        //参数1：提示语句
+        //参数2：默认值 可选
+        prompt("请输入:","18");
+
+        //log输出
+        console.log("log日志输出");
+    </script>
+</body>
+</html>

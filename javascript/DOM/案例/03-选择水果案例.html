@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        select{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<select id="all" size="5" multiple="multiple">
+    <option value="1">苹果</option>
+    <option value="2">橘子</option>
+    <option value="3">梨</option>
+    <option value="4">香蕉</option>
+    <option value="5">西瓜</option>
+</select>
+<input type="button" value=">>" id="btn1">
+<input type="button" value="<<" id="btn2">
+<input type="button" value=">" id="btn3">
+<input type="button" value="<" id="btn4">
+<select id="choose" multiple>
+
+</select>
+<script src="../common.js"></script>
+<script>
+    let all = $("all");
+    let choose = $("choose");
+    let btn1 = $("btn1");
+    let btn2 = $("btn2");
+    let btn3 = $("btn3");
+    let btn4 = $("btn4");
+
+    //全选
+    btn1.onclick = function(){
+        let opts = all.children;
+        //由于children是获取子元素，但是children是动态的，当all中的子元素减少时，children也会发生变化
+        let n = opts.length;
+        console.log("n:"+n);
+        for (let index = 0; index < n; index++) {
+            const element = opts[0];
+            element.selected = false;
+            choose.appendChild(element);
+        }
+    }
+    btn2.onclick = function(){
+        let opts = choose.children;
+        let n = opts.length;
+        for (let index = 0; index < n ;index++) {
+            const element = opts[0];
+            element.selected = false;
+            all.appendChild(element);
+        }
+    }
+    //单选和多选
+    btn3.onclick = function () {
+        let opts = all.children;
+        let arrs = [];//保存选中的选项
+        for (let i = 0; i < opts.length; i++) {
+            if (opts[i].selected === true){
+                arrs.push(opts[i]);
+            }
+        }
+        //将选中的项添加到choose中去
+        for (let i = 0; i < arrs.length; i++) {
+            arrs[i].selected = false;
+            choose.appendChild(arrs[i]);
+        }
+    }
+    btn4.onclick = function () {
+        let opts = choose.children;
+        let arrs = [];//保存选中的选项
+        for (let i = 0; i < opts.length; i++) {
+            if (opts[i].selected === true){
+                arrs.push(opts[i]);
+            }
+        }
+        //将选中的项添加到choose中去
+        for (let i = 0; i < arrs.length; i++) {
+            arrs[i].selected = false;
+            all.appendChild(arrs[i]);
+        }
+    }
+</script>
+</body>
+</html>

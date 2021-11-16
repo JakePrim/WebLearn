@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size: 30px;
+        }
+        .box{
+            width: 10rem;
+            height: 10rem;
+            background-color: pink;
+            font-size: 20px;
+        }
+        p{
+            /*rem ：相对单位，参考元素是固定的html根元素的字号的倍数。而em是参考父级元素的字号的倍数，父级元素的字号可能是不同的*/
+            width: 5rem;/**5*30 = 150px**/
+            height: 4rem;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p></p>
+    </div>
+</body>
+</html>

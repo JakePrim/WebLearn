@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * 计算
+     * @param n
+     */
+    function closeTheNumber(a) {
+        let b = 0;
+        //计算a的因数之和，存于b
+        for (let i = 1; i < a; i++) {
+            if (a % i === 0) {
+                b += i;
+            }
+        }
+        return b
+    }
+
+    for (let i = 1; i <= 2000; i++) {
+        let b = closeTheNumber(i);
+        if (closeTheNumber(b) === i && i !== b){
+            console.log("亲密数:"+i+" 和 "+b);
+        }
+    }
+</script>
+</body>
+</html>

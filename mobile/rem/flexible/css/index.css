@@ -1,0 +1,11 @@
+/*通过媒体查询限制最大到750px 字号始终是75px*/
+@media screen and (min-width:750px){
+    html{
+        font-size: 75px !important;/*important提高权重*/
+    }
+}
+
+
+div{
+    width: .666667rem;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <p>1</p>
+    <p id="p2">2</p>
+    <p>3</p>
+    <p>4</p>
+</div>
+<script>
+  let newDiv = document.createElement("div");
+  console.dir(newDiv);
+  let csl = document.createAttribute("class");//创建一个新的属性节点
+  console.dir(csl);
+
+  let ext = document.createTextNode("我是新创建的文本节点");//创建文本节点
+  console.dir(ext);
+  //创建的节点 并没有添加到DOM树上
+
+  let box = document.getElementById("box");
+
+
+  //添加新的节点
+  box.appendChild(newDiv);
+
+  //创建的节点，也可以添加子节点
+  newDiv.appendChild(ext);
+  //注意：自己创建的元素节点本身也是一个对象，可以添加一些属性和方法，等等
+  let p2 = document.getElementById("p2");
+  //内存中这个原有节点只有一个，渲染时只能有一个位置
+  box.appendChild(p2);//原有的节点 传给box,那么原有的节点从原始位置删除，添加到一个新的位置
+
+
+</script>
+</body>
+</html>

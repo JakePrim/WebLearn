@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 1;
+        a = "222";
+        a = true;//动态类型
+        console.log(a);
+
+        //八进制 0-7,
+        // console.log(089);//超过按照10进制  89
+        // // console.log(0o89);//直接报错
+        // console.log(01);//1
+        // console.log(010);//8
+        // console.log(0100);//64
+        // console.log(0o100);//64
+
+        // //16进制 0-9 a-f
+        // console.log(0x1);//1
+        // console.log(0x10);//16
+        // console.log(0x100);//256
+        // console.log(0x110);//272  256+16+0
+
+        // //0.1 + 0.2 != 0.3
+        // console.log(0.1+0.2);//0.30000000000000004
+
+        // //Infinity 无穷 正无穷 负无穷：-Infinity 本省就是一个数字
+        // console.log(Infinity);
+        // console.log(Number.MAX_VALUE);
+        // console.log(Number.MIN_VALUE);
+        // console.log(-5e329);//-Infinity
+
+        // //NaN 表示不是一个正常的数，NaN与任何值都不相等
+        // console.log(Infinity == Infinity);//true
+        // console.log(Infinity === Infinity);//true
+
+        // console.log(0/0);//NaN
+        // console.log(NaN == NaN);//false
+
+        // //isNaN 判断一个数据是不是一个NaN，是NaN返回true，不是NaN FALSE
+        // console.log(isNaN('a'));//true
+        // console.log(isNaN(11));//false
+
+        // console.log(`ES字符串模板：${a}`);//ES字符串模板：true
+
+        // var b = 2;
+        // var c = b;//直接赋值b存储的值，而不是b的内存地址
+        // c = 11;//c改变，b不会改变
+        // console.log(c,b);//11 2
+
+        //检测 数据类型  Number String Boolean Undefined null object
+        // console.log(typeof(2));//返回 number
+        // console.log(typeof(2.4));//返回 number
+        // console.log(typeof(Infinity));//返回 number
+        // console.log(typeof(NaN));//返回 number
+
+        // console.log(typeof("str"));//string
+        // console.log(typeof(undefined));//undefined
+        // console.log(typeof(true));//boolean
+        // console.log(typeof(null));//object null表示一个空对象
+
+        // //typeof 作为关键字使用-不推荐使用
+        // console.log(typeof 67);//number
+
+        // var a = null;
+        // console.log(typeof(a));//object
+        // a = 1;//变量是动态类型，变量的数据类型，随着存储的数据而变化的
+        // console.log(typeof(a));//number
+
+        //转字符串
+        // console.log(true.toString());
+        // console.log(String(23));
+        // console.log(String(undefined));
+        // console.log(String(null));
+        // console.log(Number(12).toString());
+        // console.log(12+"3");//123 num+"xxx" 字符串拼接 就变成了字符串类型
+
+        //转换数值类型
+        //字符串：纯数字字符串转换成字符串，空字符串转换成0，其他字符串转换为NaN
+        console.log(Number("12"));//12
+        console.log(Number(""));//0
+        console.log(Number("a"));//NaN
+        console.log(Number("123abc"));//NaN
+        console.log(Number("  "));//0
+
+        console.log(Number(true));//1
+        console.log(Number(false));//0
+
+        console.log(Number(undefined));//NaN 不是正常数
+        console.log(Number(null));//0 null表示空对象的指针，为0
+
+        //parseInt：字符串转成整数 对数字取整，对字符串也会取整
+        console.log(parseInt(12.32));//12
+        console.log(parseInt("13"));//13
+        console.log(parseInt("14.15"));//14
+        console.log(parseInt("15abc"));//15
+        console.log(parseInt("ab12bc"));//NaN
+        console.log(parseInt(""));//NaN 和Number("") = 0 不一样的，无法转换的字符串都是NaN
+
+        //parseFloat 字符串转成浮点数 和 parseInt 类似只不过是可以保留小数部分，其他一致
+        console.log(parseFloat("17.13"));//17.13
+
+        console.log(Boolean(NaN));//false
+        console.log(Boolean(0));//false
+        console.log(Boolean(""));//false
+        console.log(Boolean(null));//false
+        console.log(Boolean(undefined));//false
+
+        console.log(Boolean(Infinity));//true 非0 非NaN 非空字符串 非空对象  Infinity是true
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="dianji" id="btn">
+<input type="button" value="dianji" id="btn2">
+<input type="button" value="dianji" id="btn3">
+<script src="../event.js"></script>
+<script>
+    let btn = document.getElementById("btn");
+    let btn2 = document.getElementById("btn2");
+    let btn3 = document.getElementById("btn3");
+
+    btn.onclick = function () {
+        alert(1);
+    }
+    //解除绑定
+    btn.onclick = null;
+
+    // btn2.addEventListener("click", fun);
+    addEvent(btn2,"click",fun);
+    //解除绑定 必须在绑定后才能移除
+    removeEvent(btn2,"click",fun);
+
+    function fun() {
+        alert(2);
+    }
+
+    btn3.attachEvent("onclick",f);
+
+    //解除绑定
+    btn.detachEvent("onclick",f);
+    function f() {
+        alert(3);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /**
+         * 判断是否是质数
+         * @param num
+         * @returns {boolean}
+         */
+        function primeNumber(num) {
+            let result = 0;
+            for (let i = 1  ; i <=num; i++) {
+                if (num % i === 0){
+                    result++;
+                }
+            }
+            return result === 2;
+        }
+
+        /**
+         * 验证goldbach
+         */
+        function goldbach(){
+            let sum=0;
+            let count = 0;
+            for (let i = 6; i < 10000; i+=2) {
+                let flag = false;
+                for (let j = 2; j < i; j++) {
+                    if (primeNumber(j) && primeNumber(i-j)){
+                        flag = true;
+                        count++;
+                        break;
+                    }
+                }
+                sum++;
+            }
+            if (count === sum){
+                console.log("哥德巴赫猜想:"+sum);
+            }else {
+                console.log("哥德巴赫猜想失败")
+            }
+        }
+        goldbach();
+    </script>
+</body>
+</html>

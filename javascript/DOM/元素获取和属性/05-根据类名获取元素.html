@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var paras = document.getElementsByClassName("para");//返回HTMLCollection
+        console.log(paras);
+    </script>
+</head>
+<body>
+    <div id="box1">
+        <p>1</p>
+        <p class="para">para</p>
+        <p class="para">para3</p>
+        <p>4</p>
+    </div>
+    <div id="box2">
+        <p>1</p>
+        <p class="para">para</p>
+        <p class="para">para2</p>
+        <p>4</p>
+    </div>
+  <script>
+     //根据类名获取元素 不支持IE8及一下浏览器
+     // let paras = document.getElementsByClassName("para");
+     console.log(paras);//同样也会动态添加
+     let box1 = document.getElementById("box1");
+     //获取box1下的类名为para的元素
+     let box1_paras = box1.getElementsByClassName("para");
+     console.log(box1_paras);
+  </script>
+</body>
+</html>

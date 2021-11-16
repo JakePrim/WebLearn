@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+
+        #box3 {
+            width: 50px;
+            height: 50px;
+            background: skyblue;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <div id="box2">
+        <div id="box3"></div>
+    </div>
+</div>
+<script>
+    let box1 = document.getElementById("box1");
+    let box2 = document.getElementById("box2");
+    let box3 = document.getElementById("box3");
+
+    box1.addEventListener("click", fn);
+    box2.addEventListener("click", fn);
+    box3.addEventListener("click", fn);
+
+    function fn(e) {
+        console.log(this.id);
+        //标准的阻止事件冒泡
+        // e.stopPropagation();
+        //兼容低版本的阻止事件冒泡 同时高版本也可以使用
+        e.cancelBubble = true;//默认是false
+    }
+</script>
+</body>
+</html>

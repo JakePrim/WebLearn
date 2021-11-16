@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        thead {
+            background-color: #ccc;
+        }
+
+        th, td {
+            width: 100px;
+            height: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>动态创建表格</h1>
+<table id="wrap" border="1">
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>科目</th>
+        <th>成绩</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="tb"></tbody>
+</table>
+<script src="../common.js"></script>
+<script>
+    let tb = $("tb");
+    let datas = [
+        {
+            name: "ls",
+            sub: "数学",
+            score: 80,
+            isDelete: false,
+        },
+        {
+            name: "wu",
+            sub: "数学",
+            score: 81,
+            isDelete: false,
+        },
+        {
+            name: "lb",
+            sub: "数学",
+            score: 82,
+            isDelete: false,
+        },
+        {
+            name: "cc",
+            sub: "数学",
+            score: 83,
+            isDelete: false,
+        },
+        {
+            name: "sq",
+            sub: "数学",
+            score: 84,
+            isDelete: false,
+        }
+    ];
+    for (let i = 0; i < datas.length; i++) {
+        let tr = document.createElement("tr");
+        tb.appendChild(tr);
+        let obj = datas[i];
+        for (const key in obj) {
+            let td = document.createElement("td");
+            if (key === "isDelete") {
+                let a = document.createElement("a");
+                //创建属性节点
+                a.href = "javascript:void(0);";
+                a.innerText = "删除";
+                td.appendChild(a);
+                a.onclick = function () {
+                    //移除当前所在的行
+                    let tr = this.parentNode.parentNode;
+                    tb.removeChild(tr);
+                    obj[key] = true;
+                    return false;
+                }
+            } else {
+                td.innerHTML = obj[key];
+            }
+            tr.appendChild(td);
+        }
+    }
+</script>
+</body>
+</html>

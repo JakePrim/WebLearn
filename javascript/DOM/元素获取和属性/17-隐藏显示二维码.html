@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 50px;
+            height: 50px;
+            background: url("../images/bgs.png") no-repeat -159px -51px;
+            position: fixed;
+            right: 10px;
+            top: 40%;
+        }
+
+        .erweima {
+            position: absolute;
+            top: 0;
+            left: -150px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+    <script src="../common.js"></script>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="erweima hide" id="er">
+        <img src="../images/456.png" alt="/">
+    </div>
+</div>
+<script>
+    let box = $("box");
+    let er = $("er");
+    box.onmouseover = function () {
+        //鼠标移动到当前元素的事件
+        // er.className = "erweima show";
+        er.className = er.className.replace("hide", "show");//当class样式非常多的时候 会非常麻烦使用String的一个方法简化
+    }
+    box.onmouseout = function () {
+        //鼠标移出元素的边界
+        // er.className = "erweima hide";
+        er.className = er.className.replace("show", "hide");
+    }
+</script>
+</body>
+</html>

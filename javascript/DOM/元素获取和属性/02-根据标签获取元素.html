@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //提前获取元素 可以动态增加的，当时得到的是一个空数组，后期元素渲染完毕，会自动添加到集合中
+       var divs = document.getElementsByTagName("div");
+        console.log(divs);
+    </script>
+</head>
+<body>
+    <p id="para">text1</p>
+    <p id="box">text2</p>
+    <p>text3</p>
+    <p>text4</p>
+    <div>div1</div>
+    <div>div2</div>
+    <div>div3</div>
+    <!-- html的渲染顺序，如果要操作否个节点，需要将js写在渲染节点的后面才可以操作元素，
+     必须保证元素在浏览器渲染成功-->
+    <script>
+        console.log(divs);//由于动态增加，可以正常的获取元素集合
+        //注意：返回的是一个集合 所有p标签元素的集合
+       var ps = document.getElementsByTagName("p");
+       console.log(ps);//返回一个类数组 HTMLCollection
+       for (let i = 0; i < ps.length; i++) {
+           console.log(ps[i]);
+       }
+    </script>
+</body>
+</html>

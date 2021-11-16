@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"> <br>
+<input type="text" id="txt" disabled>
+<select id="list">
+    <option value="beijing">北京</option>
+    <option value="shanghai" selected>上海</option>
+</select>
+<script>
+    let btn = document.getElementById("btn");
+    let txt = document.getElementById("txt");
+    let list = document.getElementById("list");
+    let options = list.getElementsByTagName("option");
+
+    console.log(btn.value);
+    txt.value = "txt";
+    console.log(txt.disabled);
+    btn.disabled = true;//动态设置禁用
+    options[1].selected = true;//默认选中第二个选项 动态设置
+    console.log(options[0].value);
+    console.log(options[0].innerHTML);
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .gray{
+            color: gray;
+        }
+        .black{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<input type="text" class="gray" value="请输入关键字" id="txt">
+<input type="button" value="搜索" id="btn">
+<script>
+    //onfocus 监听获得焦点
+    let txt = document.getElementById("txt");
+    txt.onfocus = function () {
+        if (this.value === "请输入关键字"){
+            //清空文字
+            this.value = "";
+            this.className = "black";
+        }
+    }
+
+    //onblur 监听失去焦点
+    txt.onblur = function () {
+        if (this.value === "" || this.value === "请输入关键字"){
+            this.value = "请输入关键字";
+            this.className = "gray";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+  <p>段落</p>
+  <span>span</span>
+</div>
+<script>
+    let box = document.getElementById("box");
+
+    //获取所有类型的子节点，包括：元素节点 属性节点 文本节点等
+    console.log(box.childNodes);
+    //获取所有元素类型的子节点
+    console.log(box.children);
+    //获取第一个子节点
+    console.log(box.firstChild);//获取到的是\n
+    console.log(box.firstElementChild);//获取第一个元素类型的子节点
+    //获取最后一个子节点
+    console.log(box.lastChild);
+    console.log(box.lastElementChild);
+
+    //获取父级节点
+    console.log(box.parentNode);//body
+    console.log(box.parentElement);//body
+</script>
+</body>
+</html>

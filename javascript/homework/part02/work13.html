@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let arr = [10,11,5,19];
+        let max = undefined;
+        let maxIndex = 0;
+        let min = undefined;
+        let minIndex = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (max === undefined){
+                max = arr[i];
+            }
+            if (max < arr[i]){
+                max = arr[i];
+                maxIndex = i;
+            }
+            if (min === undefined){
+                min = arr[i];
+            }
+            if (min > arr[i]){
+                min = arr[i];
+                minIndex = i;
+            }
+        }
+        console.log(max,maxIndex,min,minIndex);
+    </script>
+</body>
+</html>

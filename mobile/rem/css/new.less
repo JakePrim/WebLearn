@@ -1,0 +1,47 @@
+
+/*需要把.less 通过node编译成.css文件， cmd:lessc style.less > style.css*/
+/* easy less 插件进行编译，随时保存 随时进行编译 */
+/*less变量 @变量名:值*/
+@color: pink;
+@f14: 15px;
+body {
+  background-color: @color;
+  font-size: @f14;
+}
+
+h2{
+    color: @color;
+}
+
+//less 嵌套写法 后台选择器：#header .logo
+#header {
+  width:200px;
+  height: 200px;
+  background-color: skyblue;
+  .logo{
+    width: 100px;
+    height: 100px;
+    background-color: green;
+  }
+}
+
+.nav{
+  width:200px;
+  height: 200px;
+  background-color: skyblue;
+  a{
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    /*交集选择器 而直接写.box 表示为a的后台选择器*/
+    &.box{
+      background-color: yellow;
+    }
+    /*伪类*/
+    &:hover{
+      background-color: yellowgreen;
+    }
+  }
+
+}

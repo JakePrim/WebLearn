@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //NaN参与的运算 不等于和不全等于为true，其他为false
+        // console.log(NaN > 8);//false
+        // console.log(NaN < 8);//false
+        // console.log(NaN == 8);//false
+        // console.log(NaN === 8);//false
+
+        // console.log(NaN != 8);//true
+        // console.log(NaN !== 8);//true
+
+        // //Infinity == Infinity 是正确的
+        // console.log(Infinity == Infinity);//true
+        // console.log(Infinity === Infinity);//true
+
+        // //其他类型的比较，除了全等和字符串和字符串比较
+        // //"123" -> 123
+        // console.log("123" == 123);//true
+        // //true -> 1
+        // console.log(true == 1);//true
+        // //false -> 0
+        // console.log(false == 0);//true
+        // //null -> 0
+        // console.log(null == 0);//false
+        // //undefined -> NaN 不确定的值 NaN ！= NaN
+        // console.log(undefined == NaN);//false
+        // //"" -> 0
+        // console.log("" == 0);//true
+        // //"abc" -> NaN 同理NaN 是不确定的数值，NaN ！= NaN
+        // console.log("abc" == NaN);//false
+        // //null == undefined
+        // console.log(null == undefined);//true
+
+        // console.log(0>=null);//true
+        // console.log(0<=null);//true
+        // console.log(undefined == 0);//false
+
+        //非正常情况3 字符串和字符串比较
+        // console.log(6 < "12");//true
+
+        // //从第一个字符开始比较 "6" < "1" 获得结果不在向后比较了
+        // console.log("6" < "12");//false
+
+        // //"A" "1"
+        // console.log("A" < "12");//false
+
+        // console.log("A" < "abc");//true
+
+        // //"n" "a" 比较，相同则依次向后比较
+        // console.log("banner" < "banana");
+
+        //比较顺序，从前往后进行比较
+
+        //(3>2) = true = 1   1 > 1 = false
+        console.log(3 > 2 > 1);//false
+
+    </script>
+</body>
+</html>

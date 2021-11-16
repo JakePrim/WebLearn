@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function factorial(n){
+            let sum = 1;
+            for (let i = 1; i <= n; i++) {
+                sum *= i;
+            }
+            return sum;
+        }
+
+        for (let i = 1; i <= 999; i++) {
+            let s = i.toString();
+            let hund = parseInt(s.charAt(0));
+            let ten = parseInt(s.charAt(1));
+            let unit = parseInt(s.charAt(2));
+            if (factorial(hund) + factorial(ten)+factorial(unit) === i){
+                console.log("喇叭花数:"+i);
+            }
+        }
+    </script>
+</body>
+</html>

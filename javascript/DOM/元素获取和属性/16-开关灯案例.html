@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="关灯" id="btn">
+<script src="../common.js"></script>
+<script>
+    let btn = $("btn");
+    let body = document.body;//document 专门提供了body对象 可以直接获取
+    btn.onclick = function () {
+        if (this.value === "关灯"){
+            body.style.backgroundColor = "black";
+            this.value = "开灯";
+        }else{
+            body.style.backgroundColor = "#fff";
+            this.value = "关灯";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+        }
+
+        #box3 {
+            width: 50px;
+            height: 50px;
+            background: yellow;
+        }
+
+        #box4 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+
+        #box5 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid skyblue;
+            margin: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <div id="box2">
+        <div id="box3"></div>
+    </div>
+</div>
+<div id="box4"></div>
+<div id="box5"></div>
+<script>
+    let box1 = document.getElementById("box1");
+    let box2 = document.getElementById("box2");
+    let box3 = document.getElementById("box3");
+    let box4 = document.getElementById("box4");
+    let box5 = document.getElementById("box5");
+
+    //addEventListener 第三个参数，用来决定事件流的方向，
+    // false 表示事件冒泡过程 默认值  box3->box2->box1
+    // true 表示事件捕获过程
+    //事件冒泡过程：从点击的元素开始 传递给父级元素 一级一级的传递 最后传递到
+    box1.addEventListener("click", function (e) {
+        console.log(this.id);
+        e = e || window.event;
+
+        //1:捕获阶段   2：执行/目标阶段   3：冒泡事件
+        console.log(e.eventPhase);
+
+        //获取真正触发事件的元素
+        let ele = e.target || e.srcElement;
+        console.log(ele);
+
+        //获取绑定事件的事件源元素
+        console.log(e.currentTarget);//box1
+
+        //获取事件类型
+        console.log(e.type);//click
+        console.log(this);//this 指向了绑定事件的事件源
+
+        console.log(e.clientX);//鼠标点击位置，距离浏览器窗口左上角的位置
+        console.log(e.clientY);
+
+        console.log(e.pageX);//鼠标点击位置，距离整个HTML文档的左上角的距离
+        console.log(e.pageY);//鼠标点击位置，距离整个HTML文档的左上角的距离
+    }, true);
+
+    //e.type的应用,事件函数使用一个函数，通过e.type判断事件类型,减少内存的占用
+    box4.onmouseover = f;
+    box4.onmouseout = f;
+
+    function f(e) {
+        console.log(this);
+        e = e || window.event;
+        switch (e.type) {
+            case "mouseover":
+                this.style.backgroundColor = "skyblue";
+                break;
+            case "mouseout":
+                this.style.backgroundColor = "red";
+                break;
+        }
+    }
+
+    //事件对象中获取尺寸的属性
+    box5.addEventListener("click",function (e) {
+        //client系列 客户端尺寸，点击的点参考浏览器窗口左上角，随着滚动尺寸会发生变化
+        e = e || window.event;
+        console.log(e.clientY);
+        console.log(e.clientX);
+        //page系列，点击的点参考HTML，随着 滚动尺寸不会发生变化
+        console.log(e.pageX);
+        console.log(e.pageY);
+    });
+
+</script>
+</body>
+</html>
