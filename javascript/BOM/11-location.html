@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" id="btn" value="回退">
+<script>
+    let btn = document.getElementById("btn");
+    btn.onclick = function () {
+        // history.back();
+        history.go(-1);//进行回退
+    }
+    // document.documentElement.scrollTop;//获取滚动的距离
+    //设置
+    // document.documentElement.scrollTop = 10;//
+
+    // console.dir(location);
+
+    // console.log(location.href);
+
+    // location.href = "http://www.baidu.com";//跳转到指定的页面 并且记录访问历史
+
+    //assign 委派 作用和href属性一样的,可以设置页面跳转的地址
+    // location.assign("https://www.baidu.com");
+
+    //replace 替换 不会记录历史
+    // location.replace("https://www.baidu.com");
+
+    //reload 重新加载 true 强制从服务器获取页面，false 如果浏览器有缓存网页的话，会直接从缓存中获取页面 默认
+    // location.reload(true);
+</script>
+
+</body>
+</html>

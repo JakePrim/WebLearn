@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" id="btn" value="点击">
+<script>
+    let btn = document.getElementById("btn");
+
+    let func = f(function () {
+        console.log(Math.random());
+    }, 1000);
+
+    let fund = d(function () {
+        console.log(Math.random());
+    },1000);
+
+    btn.onclick = fund;
+
+    //函数节流 在一定的时间内,只执行一次操作
+    function f(fn, time) {
+        let lock = null;
+        return function () {
+            if (lock == null) {//lock为空表示是解锁的状态 不为空表示为锁住的状态
+                lock = setTimeout(function () {
+                    lock = null;//一段时间后变成解锁的状态
+                    fn.apply(this, arguments);
+                }, time);
+            }
+        }
+    }
+
+    //函数防抖 事件在time后再执行，如果time内又被触发重新计时
+    function d(fn, time) {
+        let task = null
+        return function () {
+            if (task) {
+                clearTimeout(task);
+            }
+            task = setTimeout(function () {
+                fn.apply(this, arguments);
+            }, time);
+        }
+    }
+
+    //定时器 第一次执行函数时，是在第一个时间间隔之后
+    let time = setInterval(function () {
+        console.log("11")
+    },500);
+    //关闭定时器
+    clearInterval(time);
+</script>
+</body>
+</html>

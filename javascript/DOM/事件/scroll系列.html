@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            margin: 50px;
+            border: 30px solid red;
+            padding: 50px;
+            background-color: green;
+            overflow: auto;/*溢出滚动*/
+        }
+        #box p{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <p></p>
+</div>
+<script>
+    let box = document.getElementById("box");
+
+    box.onscroll = function (e) {
+        console.log(box.scrollLeft);//0
+        console.log(box.scrollTop);//0
+    }
+    //滚动的偏移位置和大小
+    console.log(box.scrollLeft);//0
+    console.log(box.scrollTop);//0
+    console.log(box.scrollHeight);//400
+    console.log(box.scrollWidth);//350
+
+    console.log(box.clientWidth);//300 - 滚动条的宽度
+    console.log(box.offsetWidth);//360 200 + 50 + 50 + 30
+</script>
+</body>
+</html>

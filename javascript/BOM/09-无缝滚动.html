@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .scroll {
+            width: 830px;
+            border: 10px solid #000;
+            height: 130px;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+
+        .scroll .inner {
+            position: relative;
+            width: 5000px;
+        }
+
+        .scroll ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 130px;
+        }
+
+        .scroll ul li {
+            float: left;
+            width: 200px;
+            height: 130px;
+            margin-right: 10px;
+            overflow: hidden;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<div id="scroll" class="scroll">
+    <div class="inner"> <!-- inner来设置最大的宽度 设置相对定位-->
+        <!--ul内部元素撑开,对inner进行绝对定位-->
+        <ul id="munit">
+            <li><img src="images/shuzi/0.png" alt=""></li>
+            <li><img src="images/shuzi/1.png" alt=""></li>
+            <li><img src="images/shuzi/3.png" alt=""></li>
+            <li><img src="images/shuzi/4.png" alt=""></li>
+            <li><img src="images/shuzi/5.png" alt=""></li>
+            <li><img src="images/shuzi/6.png" alt=""></li>
+            <li><img src="images/shuzi/7.png" alt=""></li>
+        </ul>
+    </div>
+</div>
+<script>
+    let scroll = document.getElementById("scroll");
+    let munit = document.getElementById("munit");
+
+    let nowLeft = 0;
+    //折返点 如何实现动态计算呢？当图片增加和减少的时候这里就不适用了
+
+
+    //1. 折返点计算通过js自动计算
+    //动态获取真实的宽度 offsetWidth
+    let back = -munit.offsetWidth;//6 * 210 = 1260 就是六个图片循环
+    console.log(back);
+
+    //2. 需要自动生成对应的图片结构li,赋值一组li
+    munit.innerHTML = munit.innerHTML + munit.innerHTML;
+
+    let timer;
+
+    run();
+
+    //鼠标移上滚动停止
+    scroll.onmouseover = function () {
+        clearInterval(timer);
+    }
+
+    //鼠标离开滚动重新开始
+    scroll.onmouseout = function () {
+        run();
+    }
+
+    function run() {
+        timer = setInterval(function () {
+            //1. nowLeft 自减计算
+            nowLeft -= 1;
+            //每次都要判断是否走到了折返点
+            if (nowLeft <= back) {
+                nowLeft = 0;
+            }
+            munit.style.left = nowLeft + "px";
+        }, 10);
+    }
+</script>
+</body>
+</html>

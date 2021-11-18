@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .login-button{
+            width: 50%;
+            margin: 30px auto 0 auto;
+            line-height: 40px;
+            font-size: 14px;
+            border: 1px solid #ebebeb;
+            text-align: center;
+        }
+        /*登录弹窗压盖遮罩层*/
+        .login{
+            width: 512px;
+            position: absolute;
+            border: 1px solid #ebebeb;
+            height: 200px;
+            left: 50%;
+            right: 50%;
+            background: white;
+            box-shadow: 0 0 20px #ddd;
+            z-index: 9999;
+            margin-left: -256px;
+            margin-top: 14px;
+            display: none;
+        }
+        .login-title{
+            width: 100%;
+            margin: 10px 0 0 0;
+            text-align: center;
+            cursor: move;
+            position: relative;
+        }
+        .close-login{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            position: absolute;
+            right: -25px;
+            top: -25px;
+            border-radius: 50px;
+            background: red;
+        }
+        /*遮罩层固定定位*/
+        .login-bg{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #000000;
+            filter: alpha(opacity=30);
+            -moz-opacity: 0.3;
+            -khtml-opacity:0.3;
+            opacity: 0.3;
+            display: none;
+        }
+
+        a{
+            text-decoration: none;
+            color: #000000;
+        }
+        .login-input-content{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="login-header">
+    <a href="javascript:void(0);" id="link">点击</a>
+</div>
+<!--登录层-->
+<div id="login" class="login">
+    <div id="title" class="login-title">
+        登录会员
+        <span><a id="closeBtn" class="close-login" href="javascript:void(0);">关闭</a></span>
+    </div>
+    <div class="login-input-content">
+        <div class="login-input">
+            <label>用户名</label>
+            <input type="text" placeholder="请输入用户名" name="info[username]" id="username" class="list-input">
+        </div>
+        <div class="login-input">
+            <label>密码:</label>
+            <input type="password" placeholder="请输入密码" name="info[password]" id="password" class="list-input">
+        </div>
+        <div id="loginBtn" class="login-button"><a href="javascript:void(0);">登录</a></div>
+    </div>
+</div>
+<!--遮盖层-->
+<div id="bg" class="login-bg"></div>
+<script>
+    let link = document.getElementById("link");
+    let login = document.getElementById("login")
+    let bg = document.getElementById("bg");
+    let closeBtn = document.getElementById("closeBtn");
+
+    link.onclick = function () {
+        login.style.display = "block";
+        bg.style.display = "block";
+    }
+    closeBtn.onclick = function () {
+        login.style.display = "none";
+        bg.style.display = "none";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="开始" id="btn">
+<input type="button" value="加速" id="btn1">
+<input type="button" value="减速" id="btn2">
+<input type="button" value="停止" id="btn3">
+<div id="box"></div>
+<script>
+    //视觉残留 0.1-0.4秒之间
+    let btn = document.getElementById("btn");
+    let btn1 = document.getElementById("btn1");
+    let btn2 = document.getElementById("btn2");
+    let btn3 = document.getElementById("btn3");
+    let box = document.getElementById("box");
+    let newLeft = 0;
+    let len = 35;//步长
+    let time = 50;
+    let timer = null;//存储定时器
+    //移动到某个位置，停止，但是如果步长不足的话 不一定会停止到目标的位置
+    let l = 500;
+    btn.onclick = function () {
+        if (timer) {//方法一: timer已经存在了 就不需要在指定定时器了直接返回
+            return;
+        }
+        // clearInterval(timer); //方法二: 设表先关的方法
+        //不停的点击开始会存在问题
+        timer = setInterval(function () {
+            newLeft += len;
+            if (newLeft >= l) {
+                clearInterval(timer);
+                //手动将left设置到目标的位置,防止因为步长导致得到的位置大于目标位置，强行拉到终点
+                //这就是：拉终停表法
+                newLeft = l;
+            }
+            box.style.left = newLeft + "px";
+        }, time);
+    }
+    btn1.addEventListener("click", function () {
+        len += 20;
+        //或者修改事件
+    });
+    btn2.addEventListener("click", function () {
+        len -= 5;
+    });
+    btn3.addEventListener("click", function () {
+        clearInterval(timer);
+        newLeft = 0;
+        len = 10;
+        time = 50;
+        box.style.left = newLeft + "px";
+        timer = null;
+    })
+</script>
+</body>
+</html>

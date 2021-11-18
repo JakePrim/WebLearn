@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="alert" id="btn1">
+<input type="button" value="prompt" id="btn2">
+<input type="button" value="confirm" id="btn3">
+<script>
+    //window 对象是BOM中的一个顶层对象，document对象就是window的一个子对象,当调用window下的属性和方法时可以省略不写
+    console.dir(window.document);
+    console.dir(window);
+
+    //可以省略window对象
+    // alert(1);
+    // window.alert(2);
+    //全局作用域定义的全局变量都是window的一个属性
+    //window中的特殊属性 name
+    var age = 18;
+    console.log(window.age);
+    console.log(name);//window 默认有一个name属性，表示浏览器的名称
+    var name = 123;//全局作用域下不要定义 name的变量名
+    //注意 name变成了字符串的格式了 只会在原来的name属性上进行赋值 并且只能是字符串格式的值
+    console.log(window.name);//特殊的属性 当前浏览器的名称
+    console.log(typeof name);//string
+
+    //top 属性在window也是存在的，属性值指向的就是顶层对象window
+    console.log(top.age);//18
+    //如果全局定义一个top
+    var top = 9527;
+    //top 属性是只读的不能后期更改
+    console.log(window.top);
+    console.log(top);
+    //全局作用域尽量不要定义name和top的变量名
+
+    //警示框
+    alert("hello");
+    //提示框
+    let result = prompt("提示内容","12");//第二个参数是默认值
+    console.log(result);
+    //确认框
+    let r = confirm("请确认");//true 确定 ; false 取消
+    console.log(r);
+</script>
+</body>
+</html>

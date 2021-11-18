@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 100px;
+            opacity: 0.5;
+            background-color: #0f0;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="开始" id="btn">
+<div id="box"></div>
+<script src="animate.js"></script>
+<script>
+    //视觉残留 0.1-0.4秒之间
+    let btn = document.getElementById("btn");
+    let box = document.getElementById("box");
+    //多属性运动：总时间、时间间隔相同的
+    //不同：其实位置和结束位置不同
+    animate(box, {left: 400, width: 300, height: 200, opacity: 1}, 2000);
+
+    //获取元素的样式属性对象
+    console.log(window.getComputedStyle(box));
+
+    console.log(window.getComputedStyle(box).backgroundColor);//直接拿到属性 而不用通过style进行获取了
+
+
+
+</script>
+</body>
+</html>

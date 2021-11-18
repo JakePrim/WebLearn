@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //异步加载 不会影响后面的代码
+    let task = setTimeout(function () {
+        console.log("hello world");
+    },1000);
+    //清除延时器
+    clearTimeout(task);
+    console.log("boom");
+</script>
+</body>
+</html>

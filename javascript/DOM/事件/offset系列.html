@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #box {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 10px solid yellowgreen;
+            background-color: skyblue;
+            overflow: hidden;
+            margin: 50px;
+        }
+        #child {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 50px;
+            border: 5px solid yellow;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="child">123</div>
+</div>
+<script>
+    let box = document.getElementById("box");
+    let child = document.getElementById("child");
+
+    console.log(child.offsetParent);//box -> position:relative
+
+    console.log(child.offsetLeft);//50
+    console.log(child.offsetTop);//50
+
+    //offsetWidth/offsetHeight真实的宽度和高度 不用自己计算了
+    console.log(child.offsetWidth);//140px = 100 + 边框(10 + 10) + 内边距(10 + 10)
+    console.log(child.offsetHeight);//140px
+
+    console.log(child.clientWidth);//120 = 100 + 内边距(10 + 10)
+    console.log(child.clientHeight);//120
+
+    console.log(child.clientLeft);//10 边框的大小
+    console.log(child.clientTop);//10
+</script>
+</body>
+</html>

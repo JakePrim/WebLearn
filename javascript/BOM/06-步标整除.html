@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="开始" id="btn">
+<div id="box"></div>
+<script>
+    //视觉残留 0.1-0.4秒之间
+    let btn = document.getElementById("btn");
+    let box = document.getElementById("box");
+
+
+    //总距离 = 步长 * 总次数
+    //总距离 = 结束位置 - 起始位置
+    //总次数 = 总时长 / 时间间隔
+    //步长 = 总距离 / 总次数
+    let newLeft = box.offsetLeft;//通过代码获取初始位置
+    let end = 500;//结束位置
+    let time = 1000;//总时长
+    let interval = 50;//时间间隔
+    let count = (time / interval);//总次数
+    let len = (end - newLeft) / count;//步长
+
+    let timer;
+
+    let c = 0;
+    btn.onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            c++;
+            newLeft += len;
+            box.style.left = newLeft + "px";
+            if (c >= count) {//达到了总次数
+                newLeft = end;//拉终停表
+                clearInterval(timer);
+            }
+        }, interval);
+    }
+</script>
+</body>
+</html>

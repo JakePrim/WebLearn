@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 440px;
+            border: 10px solid #f00;
+        }
+        #box img{
+            display: block;
+            width: 440px;
+        }
+    </style>
+    <script>
+        //onload 事件
+        //图片的加载过程中，会先执行后面的js代码，如果要使用图片的尺寸在js中是获取不了的
+        // console.log(box.clientHeight);//0 这是一个问题
+        window.onload = function () {//利用window.onload 事件，可以将js代码提前到HTML结构之前，一个页面只能有一个onload事件
+            //在HTML结构加载完毕，以及所有图片加载完毕后执行
+            let box = document.getElementById("box");
+            console.log(box.clientHeight);//1375
+        }
+        //后写的onload 会覆盖前面的
+    </script>
+</head>
+<body>
+<div id="box">
+    <img src="images/lunbo/01.jpg" alt="">
+    <img src="images/lunbo/02.jpg" alt="">
+    <img src="images/lunbo/03.jpg" alt="">
+    <img src="images/lunbo/04.jpg" alt="">
+    <img src="images/lunbo/05.jpg" alt="">
+</div>
+</body>
+</html>

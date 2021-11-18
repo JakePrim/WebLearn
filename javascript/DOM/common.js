@@ -33,3 +33,22 @@ function removeEvent(ele, type, fn) {
         throw Error("this is ele not support event listener");
     }
 }
+
+/**
+ * 节流函数
+ */
+function throttle(fn,d) {
+    let task = null;
+    return function () {
+        if (!task){
+            task = setTimeout(function () {
+                task = null;
+                fn.apply(this,arguments);
+            },d);
+        }
+    }
+}
+
+/**
+ * 防抖函数
+ */

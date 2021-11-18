@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li, ol {
+            list-style: none;
+        }
+
+        .carousel {
+            position: relative;
+            margin: 10px auto;
+            width: 880px;
+            height: 550px;
+            border: 1px solid #333;
+        }
+
+        .carousel .pic li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 880px;
+            height: 550px;
+            display: none;
+        }
+
+        .carousel .pic li.current {
+            display: block;
+        }
+
+        .carousel .btn a {
+            position: absolute;
+            top: 50%;
+            margin-top: -40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            color: #444;
+            text-align: center;
+            line-height: 80px;
+            font-size: 60px;
+            width: 80px;
+            height: 80px;
+            font-family: "SimSun";
+        }
+
+        .btn .left {
+            left: 10px;
+        }
+
+        .btn .right {
+            right: 10px;
+        }
+
+        .sub {
+            position: absolute;
+            width: 200px;
+            height: 40px;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -100px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .sub li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+
+        .sub li.current {
+            background-color: #0ff;
+        }
+    </style>
+</head>
+<body>
+<div class="carousel" id="carousel">
+    <ul class="pic" id="pic">
+        <li class="current"><img src="images/lunbo/01.jpg" alt=""></li>
+        <li><img src="images/lunbo/02.jpg" alt=""></li>
+        <li><img src="images/lunbo/03.jpg" alt=""></li>
+        <li><img src="images/lunbo/04.jpg" alt=""></li>
+        <li><img src="images/lunbo/05.jpg" alt=""></li>
+    </ul>
+    <div class="btn" id="btn">
+        <a href="javascript:;" class="left" id="leftBtn">&lt;</a>
+        <a href="javascript:;" class="right" id="rightBtn">&gt;</a>
+    </div>
+    <ol class="sub" id="sub">
+        <li class="current"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+</div>
+<script>
+    /**
+     * 信号量编程思路：
+     * 通过一个全局变量的信号量，在不同的事件函数中进行信息传递，让多个事件进行协同作业。
+     */
+        //1. 获取元素
+    let carousel = document.getElementById("carousel");
+    let pic = document.getElementById("pic");
+    let lis = pic.children;
+    let sub = document.getElementById("sub");
+    let ols = sub.children;
+    let leftBtn = document.getElementById("leftBtn");
+    let rightBtn = document.getElementById("rightBtn");
+
+    //全局信号量，存储的是要展示的图片所在的下标
+    let index = 0;
+
+
+    function change() {
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].className = "";
+            ols[i].className = "";
+        }
+        ols[index].className = "current";
+        lis[index].className = "current";
+    }
+
+    function rightRun() {
+        index++;
+        if (index > lis.length - 1) {
+            index = 0;
+        }
+        change();
+    }
+
+    //2. 左右按钮事件
+    rightBtn.onclick = rightRun;
+
+    leftBtn.onclick = function () {
+        index--;
+        if (index < 0) {
+            index = lis.length - 1;
+        }
+        change();
+    }
+
+    //3. 下标圆点切换
+    for (let i = 0; i < ols.length; i++) {//let 实现了块级作用域
+        ols[i].addEventListener("click", function () {
+            index = i;
+            change();
+        });
+    }
+
+    //4. 轮播图自动播放
+    let timer;
+    timer = setInterval(rightRun, 1000);
+    //5. 鼠标移上和离开事件
+    carousel.onmouseover = function () {
+        clearInterval(timer);
+    }
+    carousel.onmouseout = function () {
+        timer = setInterval(rightRun, 1000);
+    }
+</script>
+</body>
+</html>

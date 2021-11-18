@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>First</h1>
+<a href="11-location.html">点击</a>
+<input type="button" id="btn" value="前进">
+<script>
+    let btn = document.getElementById("btn");
+    btn.onclick = function () {
+        // history.forward();
+        history.go(1);//正数是跳转到 哪个访问到页面
+    }
+
+</script>
+</body>
+</html>
