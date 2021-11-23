@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const a = 1;
+    const b = 2;
+    const o = {
+        name: "tom"
+    }
+    const str = `a=${a} \` \n 123
+    name:${o.name}
+    sum: ${1 + 2}
+    sum: ${a + b}
+    random: ${Math.random()}
+    max: ${Math.max(a, b)}
+    789
+    `;
+    console.log(str);
+
+    //模板字符串标签函数
+    const tags = console.log`hello`;
+
+    const name = "zs";
+    const gender = true;
+
+    function myTagFunction(strings, name, gender) {
+        console.log(strings);//['hi,', ' is a ', '', raw: Array(3)]
+        console.log(name, gender);//zs true
+        const sex = gender ? "男" : "女";
+        return strings[0] + name + strings[1] + sex + strings[2];
+        // return 123;//将返回值传递给str2
+    }
+
+    const str2 = myTagFunction`hi,${name} is a ${gender}`;
+    console.log(str2);//123  hi,zs is a 男
+
+</script>
+</body>
+</html>

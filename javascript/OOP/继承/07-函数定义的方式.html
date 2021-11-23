@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    fn();//函数声明会提升
+    // f();//函数表达式无法提升
+    //函数声明
+    function fn() {
+        console.log(1)
+    }
+
+    //函数表达式，将函数赋值给一个变量，可以使匿名函数
+    let f = function () {
+        console.log(2);
+    }
+    fn();
+    f();
+
+    //由于js没有块级作用域 if语句下导致函数声明提升
+    // f1(); 在现代浏览器 不允许if语句中的函数声明提升了，在低版本浏览器会进行函数声明提升
+    let f1;//函数表达式就不会出现函数声明提升的问题了
+    if (true) {
+        f1 = function () {
+            console.log("f1-true");
+        }
+    } else {
+        f1 = function () {
+            console.log("f2-false");
+        }
+    }
+    f1();//f1-true
+
+
+    //通过构造函数方法定义函数，函数本身也是一种对象
+    let fun = new Function('a','b','var a = 1; console.log(a+b);');
+    fun(2,3);
+</script>
+</body>
+</html>

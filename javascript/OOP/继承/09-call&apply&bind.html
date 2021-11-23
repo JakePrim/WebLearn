@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function fun(a, b, c, d) {
+        console.log(this);
+        console.log(a + b);
+        console.log(c, d);
+    }
+
+    let o = {
+        a: 3,
+        b: 5
+    }
+    //call修改this的指向，可以执行函数
+    fun.call(o, 1, 2);
+    //apply修改this的指向,函数的参数是数组，可以执行函数
+    fun.apply(o, [3, 4]);
+    //bind修改this的指向,但是bind不会执行函数，但是可以传参
+    let fn = fun.bind(o, 5, 6);//返回一个新函数
+    fn(7, 8);//剩余的参数
+</script>
+</body>
+</html>

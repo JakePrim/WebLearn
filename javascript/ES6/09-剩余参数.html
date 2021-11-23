@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //剩余参数 必须放在形参的最后,但是默认参数和剩余参数不能同时使用
+    function fun(n, m = false, ...params) {//...接收任意个参数,相比于arguments，...操作符会将形参放到一个数组中，而arguments是一个类数组
+        console.log(n, m);//1 2
+        console.log(params);//可以直接用来数组操作
+        console.log(arguments);
+    }
+
+    fun(1, 2, 3, 4);
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //箭头函数
+    const plus = (a) => {
+        console.log(a);
+    }
+    const p = (a, b) => a + b;
+    plus(1);
+    console.log(p(1, 2));
+
+    const arr = [1, 2, 3, 4, 5, 6];
+    const a = arr.filter((item) => {
+        return item % 2 === 0;
+    });
+    const b = arr.filter(item => item % 2 === 0);
+    console.log(a);
+
+    //箭头函数内部不会改变this的指向
+    const person = {
+        name: "tom",
+        sayHi: function () {
+            console.log(`name:${this.name}`);
+        },
+        say: function () {
+            console.log(this);
+            setTimeout(() => {
+                //this -> 外部的this是person而不是window了
+                console.log(`name:${this.name}`);//这里注意this，箭头函数内部使用this而是从外面进行查找
+            }, 1000)
+        }
+    }
+    person.sayHi();//name:tom
+    person.say();
+</script>
+</body>
+</html>

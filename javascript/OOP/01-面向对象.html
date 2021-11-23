@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //抽象一个类class模板
+    function Student(name, score) {
+        this.name = name;
+        this.score = score;
+        this.printScore = function () {
+            console.log("姓名:" + this.name + " 成绩:" + this.score);
+        };
+    }
+
+    let stu = new Student("小明", 100);
+    let stu2 = new Student("小明", 90);
+    stu.printScore();
+    stu2.printScore();
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const obj = {name: "ba", age: 28};
+    //解构对象 需要相同的key
+    // const {name, age} = obj;
+    // console.log(name, age);//ba 28
+
+    const name = "tom";
+
+    const {name: newName = "jack"} = obj;//使用冒号解决命名冲突 同样可以设置默认值
+    console.log(name, newName);
+
+    //解构log
+    const {log} = console;
+
+    log("123");//123
+
+</script>
+</body>
+</html>

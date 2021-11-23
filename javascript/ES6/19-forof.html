@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //fori 遍历数组
+    //forin 遍历对象
+    //foreach 数据结构自带的遍历方法
+    //forof 遍历数据结构的统一的方式,但是遍历对象需要实现迭代器方法
+    const arr = [100, 200, 300];
+    for (let number of arr) {
+        console.log(number);
+    }
+    arr.forEach((value, index) => {
+        console.log(value);
+    })
+    //set map都可以使用forof
+    const s = new Set('foo', 'bar');
+    for (const e of s) {
+        console.log(e);
+    }
+    const m = new Map();
+    m.set('foo', 1);
+    m.set('bar', 2);
+    for (const [key, value] of m) {//forof map得到的是一个数组结构 第一个数据是key，第二个数据是value
+        //通过ES6的数组解构的方式进行 const [k,v] = arr;   对象解构 const {a,b} = obj;
+        console.log(key, value);//得到的e是一个数组结构
+    }
+</script>
+</body>
+</html>

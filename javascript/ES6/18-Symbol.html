@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //shared.js ====================
+    const cache = {}
+    //a.js ====================
+    // cache['foo'] = Math.random();
+    const s = Symbol('foo');//通过Symbol创建的值都是唯一的
+    console.log(s);
+    cache[s] = Math.random();
+    //b.js=====================
+    // cache['foo'] = 123;
+    const bs = Symbol('foo');
+    console.log(bs === s);//false
+    cache[bs] = 123;
+
+    console.log(cache);//{foo: 123} 同名覆盖了
+
+    //Symbol 主要的作用就是为对象添加独一无二的属性标识符  String Boolean Number Object undefined null Symbol BigInt
+    const obj = {}
+    obj[Symbol()] = 123;//作为对象的一个私有成员 外部不能使用
+    obj[Symbol()] = 456;
+    console.log(obj);
+
+    //for方法维护的字符串和symbol对应的关系
+    const a= Symbol.for('fos');
+    const b = Symbol.for('fos');
+    console.log(a===b);//true
+
+    const obj2 = {
+        //为对象实现迭代器 经常会用到
+        [Symbol.toStringTag]: "XObject",
+        foo:'foo value'
+    }
+    console.log(obj2);
+
+    for (const k in obj2) {
+        console.log(k);//for in 无法拿到Symbol的属性名的
+    }
+    console.log(JSON.stringify(obj2));
+
+    console.log(Object.getOwnPropertySymbols(obj2));//可以获取Symbol属性
+</script>
+</body>
+</html>

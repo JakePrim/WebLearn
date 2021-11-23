@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    Person.prototype.sayHi = function () {
+        console.log(`name:${this.name},age:${this.age}`)
+    }
+
+    function Teacher(name, age, salary) {
+        Person.call(this, name, age);//继承父类的属性
+        this.salary = salary;
+    }
+
+    //继承父类的方法
+    Teacher.prototype = new Person();
+    Teacher.prototype.constructor = Teacher;//都需要手动设置constructor属性
+
+    let t = new Teacher("zs", 20, 10000);
+    t.sayHi();//name:zs,age:20
+</script>
+</body>
+</html>

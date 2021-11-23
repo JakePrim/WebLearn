@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //不能直接给原生构造函数的原型对象添加一个对象进行扩展
+        //扩展数组的原型方法,不允许更改内置的原型对象
+        Array.prototype.getEvenSum = function () {
+            let sum = 0;
+            for (let index = 0; index < this.length; index++) {
+                const element = this[index];
+                sum += element;
+            }
+            return sum;
+          }
+          let arr = [1,2,3,4,5];
+          console.log(arr.getEvenSum());
+    </script>
+</body>
+</html>

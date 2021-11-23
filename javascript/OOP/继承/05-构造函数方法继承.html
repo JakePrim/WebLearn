@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //父类
+    function Person(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+
+    //父类的方法
+    Person.prototype.sayName = function () {
+        console.log(this.name);
+    }
+
+    //学生类型
+    function Student(name, age, sex, score) {
+        //直接对父类型进行call调用，将this指向Student
+        Person.call(this, name, age, sex);//将this->Student
+        this.score = score;
+    }
+
+    //子类型的原型对象需要继承父类型上的原型方法
+    //1. 通过for..in 对象拷贝继承
+    // for (const k in Person.prototype) {
+    //     //保留自己的constructor属性不要进行继承
+    //     if (k === "constructor") {
+    //         continue;
+    //     }
+    //     Student.prototype[k] = Person.prototype[k];//注意不要继承constructor属性
+    // }
+    //2. 直接使子类原型对象等于实例对象,只需要实例对象上的方法
+    Student.prototype = new Person();
+    Student.prototype.constructor = Student;
+    //Student原型上新增的属性和方法会添加到Person的实例对象上
+    Student.prototype.sayAge = function () {
+        console.log(this.age);
+    }
+
+    //老师类型
+    function Teacher(name, age, sex, salary) {
+        //直接对父类型进行call调用，将this指向Teacher
+        Person.call(this, name, age, sex);//将this->Teacher
+        this.salary = salary;
+    }
+
+    let s = new Student("zs", 19, "男", 90);
+    console.log(s);
+    s.sayName();
+    s.sayAge();
+
+    //之前学会了拷贝继承、原型继承，通过call实现属性继承，那么父类的方法如何继承呢？
+</script>
+</body>
+</html>

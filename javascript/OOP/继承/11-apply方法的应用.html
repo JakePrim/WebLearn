@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //定义个数组，利用apply方法，可以进行拆开操作
+    let arr = [1, 2, 3, 4];
+    //借用内置js中的方法
+    // Math.max(1,2,3,4);
+    //利用apply方法 将数组传给max
+    let number = Math.max.apply(null, arr);
+    console.log(number);//4
+
+    console.log.apply(console,arr);
+</script>
+</body>
+</html>

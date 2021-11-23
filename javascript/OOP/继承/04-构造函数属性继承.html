@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+
+    //学生类型
+    function Student(name, age, sex, score) {
+        //直接对父类型进行call调用，将this指向Student
+        Person.call(this, name, age, sex);//将this->Student
+        this.score = score;
+    }
+
+    //老师类型
+    function Teacher(name, age, sex, salary) {
+        //直接对父类型进行call调用，将this指向Teacher
+        Person.call(this, name, age, sex);//将this->Teacher
+        this.salary = salary;
+    }
+
+    let stu = new Student("za", 16, "男", 90);
+    let stu2 = new Student("zs", 18, "男", 80);
+    console.log(stu);
+</script>
+</body>
+</html>

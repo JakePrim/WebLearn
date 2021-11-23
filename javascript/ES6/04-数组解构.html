@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const arr = [100, 200, 300];
+    // const foo = arr[0];
+    // const bar = arr[1];
+    // const baz = arr[2];
+    //数组解构
+    const [foo, bar, baz] = arr;
+    console.log(foo, bar, baz);
+
+    const [, , t] = arr;//解构对应位置,其他位置逗号隔离
+    console.log(t);//300
+
+    const [f, ...rest] = arr;//从f后面，所有的成员以数组的方式存储在rest中
+    console.log(rest);//[200, 300]
+
+    //解构过程中
+    //少了
+    const [f2] = arr;
+    console.log(f2);//100
+
+    //多了
+    const [f3, f4, f5 = 400, f6 = 123] = arr;
+    console.log(f5, f6);//300 123 如果没有解构到值，会加载默认值
+
+    //拆分字符串
+    const path = "foo/bar/baz";
+    const tmp = path.split("/");
+    //直接拿到 分隔的字符串
+    const [ff, bb, zz] = tmp;
+    console.log(ff, bb, zz);//foo bar baz
+</script>
+</body>
+</html>

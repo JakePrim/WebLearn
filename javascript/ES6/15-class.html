@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //ES6之前的 定义类型
+    function Person5(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    Person5.prototype.say = function () {
+        console.log(`name:${this.name}`);
+    }
+
+    //ES6 通过class关键字定义类型
+    class Person {
+        //静态变量
+        static names = "ls";
+
+        //构造函数
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        //实例方法
+        say() {
+            //实例对象的中的方法不能访问 静态的成员
+            console.log(`name:${this.name} ${Person.names}`);
+        }
+
+        //静态方法
+        static create(name, age) {
+            console.log(`names:${this.names}`);
+            //静态方法的this不是指向某个实例对象的，而是class自己
+            return new Person(name, age);
+        }
+    }
+
+    const p = new Person("zs", 18);
+    p.say();
+
+    //静态成员
+    const p1 = Person.create("ls", 19);
+    p1.say();
+
+    //ES5的继承方式
+    function Student5(name, age, score) {
+        Person5.call(this, name, age);//继承父类的属性
+        this.score = score;
+    }
+
+    Student5.prototype = new Person5();//继承父类的方法
+    Student5.prototype.constructor = Student5;
+
+    const s5 = new Student5("es5", 15, 90);
+    s5.say();
+
+    //ES6 继承 extends
+    class Student extends Person {
+        constructor(name, age, score) {
+            super(name, age);
+            this.score = score;
+        }
+
+        hello() {
+            super.say();//调用父类的方法
+            console.log(`name:${this.name} - score:${this.score}`)
+        }
+    }
+
+    const s = new Student("ww", 19, 80);
+    s.hello();//name:ww - score:80
+
+</script>
+</body>
+</html>

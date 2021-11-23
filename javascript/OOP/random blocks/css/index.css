@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.stage{
+    position: relative;
+    width: 800px;
+    height: 600px;
+    background-color: lightcyan;
+}
+.stage div{
+    position: absolute;
+}

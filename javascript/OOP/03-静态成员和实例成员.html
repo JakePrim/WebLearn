@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.say = function () {
+            console.log(this.name);
+        }
+    }
+    //静态成员
+    Person.test = "hello world";
+
+    let person = new Person("jet", 19)
+    console.log(person.name);//获取实例成员
+    console.log(Person.test);//获取静态成员
+</script>
+</body>
+</html>

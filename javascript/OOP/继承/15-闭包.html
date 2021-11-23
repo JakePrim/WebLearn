@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //从广义上来说，定义在全局的函数也是一个闭包，只是我们没有办法将这样的函数拿到更外面的作用域进行调用，从而观察闭包的特点。
+    //闭包是天生存在的，不需要额外的结构，需要利用一些特殊的结构将一个父函数内部的子函数拿到父函数外部进行调用，从而观察闭包的存在
+    //将一个内部函数拿到父函数的外部，观察是否能调用到父函数内部的变量
+    function outer() {
+        //形成闭包环境中的变量不是一成不变的，可以被更改
+        let a = 10;
+
+        return function inner() {
+            console.log(a++);
+        }
+    }
+
+    let inner = outer();
+    inner();//10
+    inner();//11
+    //可以在函数外部读取函数内部成员，让函数内部成员始终存活在内存中的。
+
+    let arr = [];
+    for (let i = 0; i <= 10; i++) {//let形成块级作用域 或者IIFE封闭作用域
+        arr[i] = function () {
+            console.log(i);
+        }
+    }
+    arr[0]();
+    arr[1]();
+    arr[2]();
+</script>
+</body>
+</html>

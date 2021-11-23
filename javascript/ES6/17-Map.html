@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Map 数据结构
+    const obj = {};
+    obj[true] = "boolean";
+    obj[123] = "number";
+    obj[{a: 1}] = "object";
+
+    console.log(Object.keys(obj));//['123', 'true', '[object Object]'] Object中的所有的键都会转换为字符串的方式
+    console.log(obj[{}]);//object
+    console.log(obj['[object Object]']);//object
+
+    const map = new Map();
+    const a = {a: 1};
+    map.set(a, 100);
+    console.log(map);//key: {a: 1}  value: 100
+    console.log(map.get(a));//100
+
+    // console.log(map.has(a));
+    // console.log(map.delete(a));
+    // map.clear();
+
+    //遍历map
+    map.forEach((value,key)=>{
+        console.log(key,value);
+    })
+</script>
+</body>
+</html>

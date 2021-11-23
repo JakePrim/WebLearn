@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //父级
+    let laoli = {
+        name: "laoli",
+        money: 100000,
+        house: ["商铺", "住宅"],
+        tech: function () {
+            console.log("厨艺");
+        }
+    }
+    //子级
+    let xiaoli = {
+        name: "xiaoli"
+    }
+    //使用for in 对象之间的继承
+    //封装一个对象之间继承的函数
+    function extend(parent, child) {
+        for (const key in parent) {
+            if (child[key]) {
+                continue;
+            }
+            child[key] = child[key];
+        }
+    }
+
+    extend(laoli, xiaoli);
+
+    console.log(xiaoli);
+</script>
+</body>
+</html>

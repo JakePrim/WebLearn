@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //修改定时器的函数内部的this
+    let o = {
+        name: "zs",
+        age: 18,
+        s: function () {
+            //函数内部的this->o
+            setInterval(function () {
+                //如果不指定this，默认是window
+                console.log(this.age);
+            }.bind(this), 1000);
+        }
+    }
+    // o.s();
+    //更改事件函数的this
+    document.onclick = function () {
+        console.log(this.age);//this 默认指向事件源
+    }.bind(o);//this -> o
+</script>
+</body>
+</html>

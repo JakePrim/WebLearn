@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //构造函数浪费内存
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.type = "human";//每个对象的type属性都是不变的
+        //每个对象的sayName方法也是一样的
+        this.sayName = function () {
+            console.log(this.name);
+        }
+    }
+
+    //没创建一个对象 会有重复的代码
+    let p1 = new Person("j", 19);
+    let p2 = new Person("j", 19);
+    console.log(p1.sayName === p2.sayName);//false 相同逻辑的函数 在内存中占了多份
+
+    //将重复的函数进行提取出来
+    function sayName() {
+        console.log(this.name);
+    }
+
+    function Person2(name, age) {
+        this.name = name;
+        this.age = age;
+        this.type = "human";//每个对象的type属性都是不变的
+        //每个对象的sayName方法也是一样的
+        this.sayName = sayName;
+    }
+
+    let p11 = new Person2("j", 19);
+    let p22 = new Person2("j", 19);
+    console.log(p11.sayName === p22.sayName);//true 这样内存只创建了一个函数 减少了内存的浪费
+
+    //问题：但是如果有多个公共函数，需要在全局外部传递多个公共函数，不易维护和容易冲突
+    //都封装都同一个对象中去,将重复的函数进行提取出来
+    let fns = {
+        sayName: function sayName2() {
+            console.log(this.name);
+        },
+        sayAge: function () {
+            console.log(this.age);
+        }
+    };
+
+    function Person3(name, age) {
+        this.name = name;
+        this.age = age;
+        this.type = "human";//每个对象的type属性都是不变的
+        //每个对象的sayName方法也是一样的
+        this.sayName = fns.sayName;
+        this.age = fns.sayAge;
+    }
+
+    let p3 = new Person3("j", 19);
+    let p4 = new Person3("j", 19);
+    console.log(p3.sayName === p4.sayName);//true 这样内存只创建了一个函数 减少了内存的浪费
+
+    //但是上述的解决还是不太好，需要在外部创建一个对象进行维护
+
+
+</script>
+</body>
+</html>

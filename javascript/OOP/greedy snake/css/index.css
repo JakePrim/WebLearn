@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.map {
+    width: 800px;
+    height: 600px;
+    background-color: lightgray;
+    position: relative;
+}
+
+.map div{
+    position: absolute;
+}

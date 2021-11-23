@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //函数可以作为参数或者返回值就是高阶函数
+    //1. 函数作为另一个函数的参数
+    function eat(fn) {
+        console.log("吃完饭");
+        fn();
+    }
+
+    eat(function () {
+        console.log("散步");
+    })
+
+    //2. 函数作为一个函数的返回值
+    function outer(n) {
+        return function (m) {//形成了一个闭包
+            return m + n;
+        }
+    }
+
+    let m = outer(100);
+    console.log(m(1));//101
+</script>
+</body>
+</html>

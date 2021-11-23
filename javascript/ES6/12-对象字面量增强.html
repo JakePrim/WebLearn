@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //对象字面量增强
+    const bar = "bar";
+    const age = "age";
+    const obj = {
+        name: "tom",
+        bar,//之前bar:bar 在ES6中可以直接写变量名即可
+        say() {//可以省略 : function
+            console.log('hi');
+        },
+        //计算属性名
+        [age]: 18,
+        [1 + 2]: 4
+    }
+    console.log(obj);
+    obj.say();
+    // obj[age] = 18;//key
+    // console.log(obj);
+</script>
+</body>
+</html>

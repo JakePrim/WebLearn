@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function foo(bar, enable = false) {//参数后面等号 设置默认值，多个形参 有默认值的参数，需要向后提,放到形参的最后
+        // enable = enable || true;//逻辑运算的方式不严谨
+        // enable = enable === undefined;
+        console.log(enable);
+    }
+
+    foo();//false
+    foo(true);//true
+</script>
+</body>
+</html>

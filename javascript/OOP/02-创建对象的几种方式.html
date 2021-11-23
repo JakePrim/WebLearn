@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1. new Object创建对象
+    let person = new Object();
+    person.name = "bob";
+    person.age = 18;
+    person.say = function () {
+        console.log(this.name);
+    }
+    person.say();
+
+    //2. 对象字面量
+    let p = {
+        name: "bob",
+        age: 18,
+        say: function () {
+            console.log(this.name)
+        }
+    }
+    p.say();
+
+    //3. 工厂函数创建对象,调用一次函数生成一个对象
+    function createPerson(name, age) {
+        //其实就是在函数内部创建对象，然后返回对象(也可以使用对象字面量的方式)
+        let person = new Object();
+        person.name = name;
+        person.age = age;
+        person.say = function () {
+            console.log(this.name);
+        }
+        return person;
+    }
+
+    let pp = createPerson("jake",20);
+    pp.say();
+    let pp2 = createPerson("jake2",20);
+    pp2.say();
+
+    //4. 自定义构造函数，其实就是创建一个类，通过new的方式实例化类
+    function CreateFactory(name, age) {
+        //通过new 的方式类似
+        //1. let instance = new Object()
+        //2. this = instance;
+        //3. 执行函数内部的代码
+        //4. 将instance作为返回值return
+        this.name = name;
+        this.age = age;
+        this.say = function () {
+            console.log(this.name);
+        }
+    }
+
+    let p2 = new CreateFactory("jeck", 19);
+    let p3 = new CreateFactory("jet", 19);
+    console.log(p2 instanceof CreateFactory);//true 通过instanceof可以找到对应的实例类型
+    p2.say();
+    p3.say();
+    //constructor 构造器 构造函数，对象都有这个属性
+    console.log(p2.constructor);//ƒ CreateFactory(name, age)
+    console.log(pp.constructor);//ƒ Object() { [native code] }
+</script>
+</body>
+</html>

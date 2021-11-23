@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //call方法，用来改变this指向，本身是执行函数的方法
+    function fn(a, b) {
+        console.log(this);
+        console.log(a + b);
+    }
+
+    //普通的调用方式
+    fn(1, 2);//this -> window
+    //call方法 在调用函数的时候，有两个功能，可以更改函数内部this指向，保留原来调用函数执行内部代码
+    function Person() {
+        this.a = 1;
+        this.b = 2;
+    }
+
+    let p = new Person();
+    fn.call(p, 2, 3);//this -> Person
+
+</script>
+</body>
+</html>

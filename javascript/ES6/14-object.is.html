@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Object.is
+    console.log(0===false);//false
+    console.log(+0===-0);//true
+    console.log(NaN===NaN);//false NaN是有无限中可能的值
+    console.log(isNaN(NaN));//true
+
+    console.log(Object.is(+0,-0));//false
+    console.log(Object.is(NaN,NaN));//true
+</script>
+</body>
+</html>

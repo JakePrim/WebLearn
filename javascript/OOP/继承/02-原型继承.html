@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //构造函数用来创建一类对象的，继承指的是类型和类型之间的继承
+    //父类型
+    function Person(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+
+    //学生类型
+    function Student(score) {
+        this.score = score;
+    }
+
+    //老师类型
+    function Teacher(salary) {
+        this.salary = salary;
+    }
+
+    //提取 name age sex 相同的属性，通过父类提取公共的属性
+    //通过原型对象，可以将子级的属性和方法继承给将来的实例对象使用
+    Student.prototype = new Person("zs", 18, "男");//原型对象必须是实例对象  只能传递一次参数，导致属性无法更改
+    console.log(Student.prototype.constructor);//Person... 应该指向Student
+    Student.prototype.constructor = Student;//需要手动设置constructor 因为原型对象等于一个对象之后原型对象会被更改
+    let stu = new Student(80);
+    console.dir(stu);
+    // console.log(stu.__proto__.name);//zs
+    console.log(stu.name);//zs
+    stu.name = "12";
+    console.log(stu.name);
+</script>
+</body>
+</html>

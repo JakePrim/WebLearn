@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1. 普通函数 内部this指向的是window
+    function fun() {
+        console.log(1);
+    }
+
+    fun();
+
+    //2. 构造函数 内部this指向的是创建的实例对象
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    let p1 = new Person("zs", 18);
+
+    //3. 对象中的方法，通过对象打点调用函数，然后加小括号
+    //内部this默认指向调用的对象自己
+    let o = {
+        sayHi: function () {
+            console.log("hi"+this);
+        }
+    }
+    o.sayHi();
+    let f = o.sayHi;
+    f();//this指向的是window
+
+    //4. 事件函数，不需要加特殊的符号执行,只要事件被触发，会自动执行函数
+    //事件函数内部this指向的是触发事件的事件源
+    document.onclick = function () {
+        console.log("事件");
+    }
+
+    //5. 定时器和延时器中的函数，也不需要加特殊的符号，只要执行后在规定的时间自动执行函数
+    //内部this指向的是window
+    setTimeout(function () {
+        console.log("定时器函数")
+    },1000);
+
+</script>
+</body>
+</html>
