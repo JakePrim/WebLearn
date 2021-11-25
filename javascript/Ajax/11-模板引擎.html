@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <!--1. 引入模板文件-->
+    <script src="js/template-native.js"></script>
+    <!--2. 创建模板-->
+    <script type="text/html" id="tem">
+        <!--3. 添加模板中的结构-->
+        <% for(let i =0;i<5;i++){ %>
+        <div>这是一个模板中的div1 <%= i %> <%= name %></div>
+        <div>这是一个模板中的div2 <%= i %></div>
+        <% } %>
+        <!--4. 在模板中编写js代码解析数据-->
+    </script>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    //将模板内的内容添加到box里面
+    //template() 调用模板内容  参数1：调用的模板的id  参数2是一个对象型的数据，会传递给模板，对象中的属性可以直接当变量名使用
+    $(".box").html(template("tem", {name: "tom"}));
+</script>
+</body>
+</html>

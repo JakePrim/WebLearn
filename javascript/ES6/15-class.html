@@ -30,6 +30,7 @@
         //实例方法
         say() {
             //实例对象的中的方法不能访问 静态的成员
+            Person.create("123",56);
             console.log(`name:${this.name} ${Person.names}`);
         }
 

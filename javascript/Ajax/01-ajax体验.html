@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script>
+        //jquery中的Ajax方法
+        $.ajax({
+            url: "https://jsonplaceholder.typicode.com/users",
+            type: "GET",
+            dataType: "json",
+            data: {"id": 1},
+            success: function (data) {
+                console.log(data);//请求成功的数据
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

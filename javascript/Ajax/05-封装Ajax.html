@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="WAjax.js"></script>
+<script>
+    fire("POST", "http://localhost:3000/posts1", {title: "李四", author: "jj"}, {
+        onsuccess: function (data) {
+            console.log(data);
+        },
+        onerror: function (status, text) {
+            console.log("error" + status + " text:" + text);
+        },
+        onload: function () {
+            console.log("loading...")
+        }
+    });
+</script>
+</body>
+</html>

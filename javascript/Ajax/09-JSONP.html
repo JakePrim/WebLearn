@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="请求" class="btn">
+<script src="js/jquery-1.12.4.min.js"></script>
+<script>
+    $(".btn").click(function () {
+        $.ajax({
+            url: "https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web",
+            type: "get",
+            dataType: "JSONP",
+            jsonp: "cb",//设置参数名 这条属性可以设置回调函数的参数名称，必须和后台接口的回调函数参数保持一致
+            jsonpCallback: "abc",//jQ自动分配的回调函数的名称，可以自己进行设置
+            data: {"wd": "ajax"},
+            success: function (data) {
+                console.log(data);
+            }
+        })
+    });
+</script>
+</body>
+</html>

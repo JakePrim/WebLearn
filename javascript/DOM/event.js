@@ -5,12 +5,17 @@
  * @param fn 事件函数
  */
 function addEvent(ele, type, fn) {
-    if (ele.addEventListener) {
-        ele.addEventListener(type, fn);
-    } else if (ele.attachEvent) {
-        ele.attachEvent("on" + type, fn);
+    if (type.startsWith("on")) {//以on开头的事件
+        ele[type] = fn;
+        console.log(ele);
     } else {
-        throw Error("this is ele not support event listener");
+        if (ele.addEventListener) {
+            ele.addEventListener(type, fn);
+        } else if (ele.attachEvent) {
+            ele.attachEvent("on" + type, fn);
+        } else {
+            throw Error("this is ele not support event listener");
+        }
     }
 }
 
@@ -21,12 +26,16 @@ function addEvent(ele, type, fn) {
  * @param fn 事件函数
  */
 function removeEvent(ele, type, fn) {
-    if (ele.removeEventListener) {
-        ele.removeEventListener(type, fn);
-    } else if (ele.detachEvent) {
-        ele.detachEvent("on" + type, fn);
+    if (type.startsWith("on")) {
+        ele[type] = null;
     } else {
-        throw Error("this is ele not support event listener");
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, fn);
+        } else if (ele.detachEvent) {
+            ele.detachEvent("on" + type, fn);
+        } else {
+            throw Error("this is ele not support event listener");
+        }
     }
 }
 

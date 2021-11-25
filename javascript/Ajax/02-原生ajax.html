@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1. 创建一个XMLHttpRequest对象 IE6需要兼容ActiveXObject("Microsoft.XMLHTTP")
+    let xhr = null;
+    //兼容写法
+    if (window.XMLHttpRequest) {
+        //标准浏览器
+        xhr = new XMLHttpRequest();
+    } else {
+        //兼容IE6浏览器
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    console.log("UNSENT", xhr.readyState);//0  xhr 对象已经被创建还没有调用open方法
+    //2. 打06开一个API
+    // xhr.open("GET", "https://jsonplaceholder.typicode.com/users?id=1");
+    xhr.open("POST", "https://jsonplaceholder.typicode.com/users", true);//默认为true 异步 false如果设置了同步加载 那么会一直卡在send部分
+    console.log("OPEND", xhr.readyState);//1 open方法已经被调用还没有调用send方法
+    //设置请求头
+    //一般get方法不需要设置，而post方法必须设置
+    // xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    //3. 发送请求
+    xhr.send("name=harry&age=19");
+
+    //4. 获取响应结果
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);//2  3  4
+        //readyState 状态来确定此次请求是否完成
+        if (this.readyState === 4) {
+            console.log("DONE");
+            //响应体下载完成，可以直接使用responseText
+            console.log(this.responseText);
+        } else if (this.readyState === 2) {
+            //send方法已经被调用，并且已经可以获取状态行和响应头
+            console.log("HEADERS_RECEIVED")
+        } else if (this.readyState === 3) {
+            //响应体下载中，responseText属性可能已经包含部分数据
+            console.log("LOADING")
+            // console.log(this.responseText);//数据可能存在丢失的情况
+        }
+    }
+    console.log("After Ajax");
+</script>
+</body>
+</html>

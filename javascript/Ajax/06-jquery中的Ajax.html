@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+<script>
+    //ajax全局设置 只能作为公共的参数
+    $.ajaxSetup(
+        {
+            url:"http://localhost:3000/posts",
+            type: "post"
+        }
+    );
+    //ajax请求
+    $.ajax({
+        url: "http://localhost:3000/posts",
+        type: "get",
+        dataType: "json",
+        data: {id: 1},
+        timeout: 5000,
+        beforeSend: function (xhr) {
+            console.log("beforeSend");
+        },
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (xhr) {
+            console.log("error");
+        },
+        complete: function (xhr) {
+            console.log("complete")
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1" id="box">
+    <tr>
+        <th>ID</th>
+        <th>文章</th>
+        <th>作者</th>
+    </tr>
+</table>
+<script>
+    const box = document.getElementById("box");
+
+    const xhr = new XMLHttpRequest();
+    //GET 请求
+    xhr.open("GET", "http://localhost:3000/posts");
+    xhr.responseType = "json";//responseType 决定了 响应的response的返回类型
+    xhr.onload = function () {
+        console.log(this.readyState);
+        // console.log(this.responseText);
+        console.log(this.response);//response 返回的就是JSON类型
+    }
+    xhr.onprogress = function (e) {
+        console.log("progress...", e.loaded);//loaded 在请求过程中 接收到的数据的个数
+        console.log(e.total);
+    }
+    xhr.send(null);
+
+    // xhr.onreadystatechange = function () {
+    //     if (this.readyState === 4) {
+    //         //解析JSON字符串
+    //         const result = JSON.parse(this.responseText);
+    //         let str = "";
+    //         for (const el of result) {
+    //             str += `<tr><td>${el.id}</td><td>${el.title}</td><td>${el.author}</td></tr>`;
+    //         }
+    //         box.innerHTML = box.innerHTML + str;
+    //         console.log(result);
+    //     }
+    // }
+
+    // //POST 请求
+    // xhr.open("POST", "http://localhost:3000/posts");
+    // // xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // xhr.setRequestHeader("Content-Type", "application/json");
+    // const o = {
+    //     title: "zs",
+    //     author: "ww",
+    // }
+    // xhr.send(JSON.stringify(o));//传递JSON字符串
+    // xhr.onreadystatechange = function () {
+    //     if (this.readyState === 4) {
+    //         const result = JSON.parse(this.responseText);//返回新增的一条数据
+    //         console.log(result);
+    //     }
+    // }
+</script>
+</body>
+</html>

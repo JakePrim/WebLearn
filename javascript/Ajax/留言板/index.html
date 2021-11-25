@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="js/template-native.js"></script>
+  <!-- 创建模板 -->
+  <script id="tem" type="text/html">
+    <!-- 将拿到的数据中 的 comments 变量进行遍历 -->
+  <% for (var i=0 ; i < comments.length ; i++) { %>
+    <li>
+      <p class="floor">
+        <%= comments[i].id %>楼<a href="javascript:;" class="delete">删除</a>
+      </p>
+      <p class="author">层主：<span class="name">
+          <%= comments[i].username %>
+        </span></p>
+      <p class="content">
+        <%= comments[i].content %>
+      </p>
+    </li>
+    <% } %>
+  </script>
+
+</head>
+
+<body>
+  <div class="main">
+    <div class="post">
+      <h2>新年快乐</h2>
+      <p class="author">楼主：行痴</p>
+      <p class="txt">新的一年，祝大家新年快乐，身体健康，升职加薪！</p>
+    </div>
+    <div class="reply">
+      <h4>发表回复</h4>
+      <p>用户名：<input type="text" class="user"></p>
+      <textarea class="editor"></textarea>
+      <input type="button" value="发表" class="btn">
+    </div>
+    <div class="cmts">
+      <ul class="list">
+
+      </ul>
+    </div>
+  </div>
+  <script>
+    // 获取元素
+    var $list = $(".cmts .list");
+    var $btn = $(".reply .btn");
+    var $user = $(".reply .user");
+    var $editor = $(".reply .editor");
+    // 获取后台数据
+    getData();
+    // 封装函数
+    function getData() {
+      $.ajax({
+        url: "http://localhost:3000/db",
+        type: "GET",
+        success: function (data) {
+          // console.log(data)
+          // 将得到的数据通过模板添加到页面中
+          $list.html(template("tem", data));
+          $(".cmts .list .delete").click(function () {
+            // 要找到自己的祖先中的li 标签
+            $li = $(this).parents("li");
+            // 找到 li 标签记录的在数据库中的 id
+            var index = $li.attr("uid");
+            // 发送请求到数据库，删除对应的数据
+            $.ajax({
+              url: "http://localhost:3000/comments/" + index,
+              type: "DELETE"
+            })
+            // 从 DOM结构中删除对应的 li
+            $li.remove();
+          })
+        }
+      });
+    }
+
+    // 添加一项新的数据到数据库中
+    // 添加点击事件
+    $btn.click(function () {
+      var username = $user.val();
+      var content = $editor.val();
+      $.ajax({
+        url: "http://localhost:3000/comments",
+        type: "POST",
+        dataType: "json",
+        data: { username: username, content: content },
+        success: function (data) {
+          // console.log(data);
+          // 重新获取整个数据
+          getData();
+        }
+      })
+    })
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const arr = [1, true, NaN, 23, 'hello'];
+    console.log(arr.indexOf(true));//1
+    console.log(arr.indexOf(null));//-1 找不到返回-1
+    console.log(arr.indexOf(NaN));//无法查找NaN的位置，因为NaN是个无限可能的数
+
+    console.log(arr.includes(NaN));//true 可以检测NaN
+
+    //指数运算符
+    console.log(2 ** 10);//1024
+
+    const {a, b, c} = {'c': 10, 'b': 9, 'a': 8};
+    console.log(a, b, c);// 8 9 10
+</script>
+</body>
+</html>

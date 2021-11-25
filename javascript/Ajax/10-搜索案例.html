@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        input {
+            border: 0;
+            outline: none;
+        }
+
+        .box {
+            width: 500px;
+            height: 50px;
+            margin: 20px auto;
+        }
+
+        .search-box {
+            float: left;
+            width: 400px;
+            border: 2px solid #0af;
+            box-sizing: border-box;
+        }
+
+        .box .btn {
+            float: left;
+            width: 100px;
+            height: 50px;
+            background-color: #0af;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .search-box .txt {
+            display: block;
+            height: 46px;
+            line-height: 46px;
+            font-size: 16px;
+            color: #333;
+            padding-left: 10px;
+        }
+
+        .search-box .suggest-list li {
+            padding: 0 10px;
+            line-height: 36px;
+        }
+    </style>
+    <script src="js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+<div class="box">
+    <div class="search-box">
+        <input type="text" class="txt">
+        <ul class="suggest-list">
+        </ul>
+    </div>
+    <input type="button" value="搜索" class="btn">
+</div>
+<script>
+    //监听输入的文字进行搜索
+    const txt = $(".txt");
+    const suggestList = $(".suggest-list");
+
+    txt.keyup(function (ev) {
+        //获取输入的内容
+        const keyword = $(this).val();
+        //发送数据请求
+        $.ajax({
+            url: "https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web",
+            dataType: "JSONP",//跨域请求
+            jsonp: "cb",
+            data: {
+                "wd": keyword
+            },
+            success: function (data) {
+                const arr = data.g;
+                if (arr !== undefined && arr !== null) {
+                    console.log(arr);
+                    let str = "";
+                    for (const ele of arr) {
+                        str += `<li>${ele.q}</li>`;
+                    }
+                    suggestList.html(str);
+                }
+            }
+        })
+    });
+</script>
+</body>
+</html>

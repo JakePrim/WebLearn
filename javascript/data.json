@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "title": "lili",
+      "author": "jake",
+      "id": 2
+    },
+    {
+      "title": "zs",
+      "author": "ww",
+      "id": 3
+    },
+    {
+      "title": "李四",
+      "author": "jj",
+      "id": 4
+    },
+    {
+      "title": "李四",
+      "author": "jj",
+      "id": 5
+    },
+    {
+      "title": "李四",
+      "author": "jj",
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

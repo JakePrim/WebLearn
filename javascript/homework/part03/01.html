@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        select {
+            width: 200px;
+            background-color: skyblue;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<select id="all">
+    <option value="1">苹果</option>
+    <option value="2">橘子</option>
+    <option value="3">梨</option>
+    <option value="4">香蕉</option>
+    <option value="5">西瓜</option>
+</select>
+<script>
+    const all = document.getElementById("all");
+    const options = all.getElementsByTagName("option");
+
+    let i = Math.floor(Math.random() * 5);
+    console.log(i);
+    //随机选中某一项
+    options[i].selected = true;
+
+</script>
+</body>
+</html>

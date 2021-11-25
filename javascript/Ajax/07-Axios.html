@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<script>
+    // axios.get("http://localhost:3000/posts?id=1")
+    //     .then((response) => {//请求成功之后
+    //         console.log(response);
+    //         //response.data 是真正的响应体
+    //         console.log(response.data);
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
+    //     });
+
+    //axios 全局默认配置
+    // axios.defaults.baseURL = "http://localhost:3000/";
+    //自定义实例默认值
+    // const instance = axios.create({
+    //     baseURL: "http://localhost:3000/",
+    // })
+    // instance.get("posts", {
+    //     method: "get",
+    //     params: {
+    //         id: 2
+    //     }
+    // }).then(res => {
+    //     console.log(res.data);
+    // })
+
+    axios({
+        url: "posts",
+        method: "get",
+        headers: {//请求头的配置 默认content-type:application/json
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        params: {
+            id: 2,
+        },//用于设置get或者delete方法
+        timeout: 5000,
+        responseType: "json",//默认JSON
+        // data: {
+        //     //作为请求主体发送数据 用于post方法请求
+        //     id:3,
+        // }
+    }).then((response) => {
+        console.log(response.data);
+    }).catch(error => {
+        console.log(error);
+    });
+
+
+</script>
+</body>
+</html>

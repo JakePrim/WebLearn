@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "id": 1,
+      "username": "小鹿",
+      "content": "同意楼主的观点"
+    },
+    {
+      "id": 2,
+      "username": "玄霄",
+      "content": "楼主说的对！"
+    },
+    {
+      "id": 3,
+      "username": "点点",
+      "content": "给楼主打call~"
+    },
+    {
+      "id": 4,
+      "username": "江江",
+      "content": "给楼主打call~ +10000"
+    },
+    {
+      "username": "西岭",
+      "content": "楼主最帅",
+      "id": 5
+    },
+    {
+      "username": "西毒",
+      "content": "楼主一般",
+      "id": 6
+    },
+    {
+      "username": "东邪",
+      "content": "哈哈哈哈",
+      "id": 7
+    },
+    {
+      "username": "南帝",
+      "content": "新年快乐",
+      "id": 8
+    }
+  ]
+}
