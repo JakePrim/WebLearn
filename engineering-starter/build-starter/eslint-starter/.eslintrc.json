@@ -1,0 +1,24 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 13
+  },
+  //
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    //缩进规则 2个空格缩进
+    "quotes": [
+      "error",
+      "double"
+    ]
+    //使用双引号,使用单引号报错
+  }
+}

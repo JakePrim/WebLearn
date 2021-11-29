@@ -1,0 +1,22 @@
+{
+  "name": "npm-scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "foo": "node bar.js",
+    "style": "lessc styles/main.less styles/main.css && minify styles/main.css > styles/main.min.css",
+    "t1": "node task1.js",
+    "t2": "node task2.js",
+    "t3": "node task3.js",
+    "p": "run-p t1 t2 t3",
+    "s": "run-s t1 t2 t3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
