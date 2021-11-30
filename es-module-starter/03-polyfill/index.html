@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- nomodule 会在不支持的浏览器加载polyfill -->
+    <script
+      nomodule
+      src="https://unpkg.com/promise-polyfill@8.2.1/dist/polyfill.min.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/browse/browser-es-module-loader@0.4.1/dist/babel-browser-build.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/browser-es-module-loader@0.4.1/dist/browser-es-module-loader.js"
+    ></script>
+    <script type="module">
+      import { foo } from "./module.js";
+
+      console.log(foo);
+    </script>
+  </body>
+</html>

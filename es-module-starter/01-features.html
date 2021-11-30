@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="module">
+    console.log("this is es module")
+</script>
+<script type="module">
+    var foo = 100;
+    console.log(foo);
+</script>
+<script type="module">
+    console.log(foo);//报错了foo is not defined
+</script>
+
+<!-- defer属性 会延迟执行脚本 -->
+<script src="demo.js" type="module"></script>
+<p>123</p>
+<script type="module">
+    console.log("this is es module after")
+</script>
+</body>
+</html>
