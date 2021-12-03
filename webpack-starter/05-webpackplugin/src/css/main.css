@@ -1,0 +1,34 @@
+/**
+ * 这里是css注释
+ */
+p {
+  background: red;
+}
+
+.code {
+  user-select: none;
+}
+
+body {
+  background: url("../image/bg.jpg");
+}
+
+@font-face {
+  font-family: webfont;
+  font-display: swap;
+  src: url("../fonts/webfont.eot"); /* IE9 */
+  src:
+    url("../fonts/webfont.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/webfont.woff2") format("woff2"),
+    url("../fonts/webfont.woff") format("woff"),
+    url("../fonts/webfont.ttf") format("truetype"),
+    url("../fonts/webfont.svg#webfont") format("svg"); /* iOS 4.1- */
+}
+
+.web-font {
+  font-family: webfont, sans-serif !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
