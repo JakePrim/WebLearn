@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-show="true">这个元素会显示</p>
+    <!--  表达式  -->
+    <p v-show="2>11">标签内容</p>
+    <p v-show="bool">这个元素会隐藏</p>
+    <template v-show="false">
+        <span>template</span>
+    </template>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            bool: true,
+        }
+    });
+</script>
+</body>
+</html>

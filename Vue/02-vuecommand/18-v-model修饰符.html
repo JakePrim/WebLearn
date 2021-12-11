@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model.trim="value">
+    <p>trim:{{ value }}</p>
+
+    <input type="text" v-model.lazy.trim="value1">
+    <p>lazy:{{ value1 }}</p>
+
+    <input type="text" v-model.number="value2">
+    <p>number:{{ value2 }}</p>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value: '',
+            value1: '',
+            value2: '',
+        },
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h3>购物车</h3>
+    <!--    @count-change="totalCount+=$event"-->
+    <product-item @count-change="onChangeCount"
+                  v-for="item in products" :key="item.id" :title="item.title"></product-item>
+    <p>总数量:{{totalCount}}</p>
+
+    <p>{{iptValue}}</p>
+    <com-input v-model="iptValue"></com-input>
+</div>
+<script>
+
+    const ComInput = {
+        props: ['value'],
+        template: `
+          <div>
+          <input type="text" :value="value" @input="onInput">
+          </div>
+        `,
+        methods: {
+            onInput(event) {
+                //告知父组件 值发生变化
+                $emit('input', event.target.value)
+            }
+        }
+    }
+
+    //商品子组件
+    Vue.component('product-item', {
+        props: ['title'],
+        template: `
+          <div>
+          <span>商品名称:{{ title }},商品个数:{{ count }}</span>
+          <button @click="countIns()">+1</button>
+          <button @click="countIns5()">+5</button>
+          </div>
+        `,
+        data() {
+            return {
+                count: 0
+            }
+        },
+        methods: {
+            countIns() {
+                //触发事件   事件名称    数据
+                this.$emit('count-change', 1);
+                this.count++;
+            },
+            countIns5() {
+                this.$emit('count-change', 5);
+                this.count += 5;
+            }
+        }
+    });
+
+    //购物车父组件
+    new Vue({
+        el: '#app',
+        data: {
+            products: [
+                {id: 1, title: '苹果'},
+                {id: 2, title: '香蕉'},
+                {id: 3, title: '橙子'}
+            ],
+            totalCount: 0,
+            iptValue: ''
+        },
+        methods: {
+            onChangeCount(count) {
+                this.totalCount += count;
+            }
+        },
+        components: {
+            ComInput
+        }
+    })
+</script>
+</body>
+</html>

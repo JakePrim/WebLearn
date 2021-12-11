@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--    鼠标左键触发-->
+    <button @click.left="fn">按钮1</button>
+    <!--    鼠标右键触发-->
+    <button @click.right="fn">按钮2</button>
+    <!--    鼠标中键触发-->
+    <button @click.middle="fn">按钮3</button>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value: ''
+        },
+        methods: {
+            //ctrl+q清空 input内容
+            fn(event) {
+                console.log('点击元素')
+            },
+        }
+    });
+</script>
+</body>
+</html>

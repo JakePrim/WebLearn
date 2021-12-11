@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="value">
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value: ''
+        },
+        beforeCreate() {
+            console.log('实例初始化之前调用')
+        },
+        created() {
+            console.log('实例被创建完毕，可以请求网络了')
+        },
+        beforeMount() {
+            console.log('实例挂载到页面之前')
+        },
+        mounted() {
+            console.log('实例挂载到了页面上')
+        },
+        beforeUpdate() {
+            console.log('数据已经更新，视图更新前调用')
+        },
+        updated() {
+            console.log('视图更新后调用')
+
+        },
+        beforeDestroy() {
+            console.log('实例销毁之前调用')
+        },
+        destroy() {
+            console.log('实例销毁后调用')
+        }
+    });
+</script>
+</body>
+</html>

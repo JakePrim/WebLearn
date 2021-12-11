@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <!--        v-for 和 v-if不建议用在同一个元素上，因为v-for先创建元素，v-if在移除元素会非常消耗性能 也无法分开 此方式不合适-->
+        <!--        <li v-if="item>10" v-for="item in arr">{{ item }}</li>-->
+
+
+        <!--        v-for 与methods结合  methods会反复调用，代码效率低 -->
+        <!--        <li v-for="item in getResult()">{{item}}</li>-->
+
+        <!--        v-for 与 计算属性结合-->
+        <li v-for="item in getNews">{{ item }}</li>
+
+    </ul>
+
+    <ul>
+        <li v-for="item in getNews">{{ item }}</li>
+    </ul>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            arr: [1, 12, 13, 4, 15, 6, 19, 2, 20]
+        },
+        computed: {
+            getNews() {
+                console.log('getNews');
+                return this.arr.filter(((value, index, array) => {
+                    return value > 10;
+                }))
+            }
+        },
+        methods: {
+            getResult() {
+                //filter 返回一个新数组
+                return this.arr.filter(((value, index, array) => {
+                    return value > 10;
+                }))
+            }
+        }
+    });
+</script>
+</body>
+</html>

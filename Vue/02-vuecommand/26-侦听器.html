@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="value">
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value: '',
+            obj: {
+                content1: '内容1',
+                content2: '内容2'
+            },
+            arr: [1, 2, 3, 4]
+        },
+        //侦听器
+        watch: {
+            //监听data.value的变化，只要value变了就会触发侦听器的操作
+            value(val, oldVal) {
+                console.log('侦听器执行了', val, oldVal);
+            },
+            //监听对象内部的变化
+            obj: {
+                deep: true,
+                //对象内部变换的处理函数
+                handler(val, oldVal) {
+                    console.log('obj:', val, oldVal);
+                }
+            },
+            //监听数组变化
+            arr(val, oldVal) {
+                console.log("arr:", val, oldVal);
+            }
+        }
+    });
+</script>
+</body>
+</html>

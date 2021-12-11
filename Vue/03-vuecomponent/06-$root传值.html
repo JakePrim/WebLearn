@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <com-a></com-a>
+</div>
+<script>
+
+    const ComB = {
+        template: `
+          <div>组件B:{{ $root.count }}
+          <button @click="fn">按钮</button>
+          </div>
+
+        `,
+        methods: {
+            fn() {
+                this.$root.count += 2;
+            }
+        }
+    }
+    const ComA = {
+        template: `
+          <div>组件A:{{ $root.count }}
+          <com-b></com-b>
+          <button @click="fn">按钮</button>
+          </div>
+        `,
+        methods: {
+            fn() {
+                this.$root.count++;//修改根实例的数据
+            }
+        },
+        components: {
+            ComB
+        }
+    }
+
+
+    //父组件
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            count: 0
+        },
+        components: {
+            ComA,
+        }
+    });
+</script>
+</body>
+</html>

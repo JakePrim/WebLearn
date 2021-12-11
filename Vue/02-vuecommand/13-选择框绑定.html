@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>单选select数据:{{value4}}</p>
+    <select v-model="value4">
+        <option value="">请选择</option>
+        <option value="1">选项一</option>
+        <option value="2">选项二</option>
+        <option value="3">选项三</option>
+    </select>
+    <p>多选select数据:{{value5}}</p>
+    <select v-model="value5" multiple>
+        <option value="1">选项一</option>
+        <option value="2">选项二</option>
+        <option value="3">选项三</option>
+    </select>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value4: '',
+            value5: []
+        }
+    });
+</script>
+</body>
+</html>

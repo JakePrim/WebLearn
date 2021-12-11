@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        #app div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <a href="http://www.baidu.com" @click.prevent="fn">百度</a>
+
+    <a href="http://www.baidu.com" @click.prevent>直接设置阻止默认行为</a>
+
+    <div @click="fn1">
+        <button @click.stop="fn2">按钮</button>
+        <!--      多个修饰符一起使用，阻止默认行为并且阻止事件传播  -->
+        <a href="" @click.prevent.stop="fn">链接</a>
+    </div>
+
+    <!--    once只会触发一次事件-->
+    <button @click.once="fn2">按钮</button>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value4: '',
+            value5: []
+        },
+        methods: {
+            fn() {
+                console.log('这是a标签的点击事件');
+            },
+            fn1() {
+                console.log('div点击事件');
+            },
+            fn2() {
+                console.log('button点击事件');
+            }
+        }
+    });
+</script>
+</body>
+</html>

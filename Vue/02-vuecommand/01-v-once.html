@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p>此内容会随着数据变化而自动变化:{{content}}</p>
+    <p v-once>此内容不会随着数据变化而自动变化:{{content}}</p>
+    <p v-text="content">这是原始内容</p>
+    <p v-html="htmlContent">HTML文本</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el:"#app",
+        data:{
+            content:'内容文本',
+            htmlContent: '<em>内容文本</em>'
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--  同类型元素 例如登录、注册大多元素内容一样,vue考虑渲染性能的问题 需要设置key  -->
+    <div v-if="type === 'username'" :key="'username'">
+        用户名输入框:<input type="text">
+    </div>
+    <div v-else :key="'email'">
+        邮箱输入框:<input type="text">
+    </div>
+    <ul v-if="false">
+        <li v-for="item in items">{{ item }}</li>
+    </ul>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            bool: true,
+            type: 'username',
+            items: {
+                content1: '内容1',
+                content2: '内容2',
+                content3: '内容3',
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>单个checkbox选中的数据为:{{value4}}</p>
+    <input type="checkbox" name="item" id="item" value="选项内容" v-model="value4">
+    <label for="item">选项</label>
+
+    <p>多个checkbox选中的数据为:{{value5}}</p>
+    <input type="checkbox" name="one" id="one" value="选项内容一" v-model="value5">
+    <label for="one">选项一</label>
+    <input type="checkbox" name="two" id="two" value="选项内容二" v-model="value5">
+    <label for="two">选项二</label>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value4: '',
+            value5: []
+        }
+    });
+</script>
+</body>
+</html>

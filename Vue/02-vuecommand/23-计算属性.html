@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ getSum() }}</p>
+    <p>{{ getSum() }}</p>
+    <p>{{ getSum() }}</p>
+
+    <p>{{ getResult }}</p>
+    <p>{{ getResult }}</p>
+    <p>{{ getResult }}</p>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            arr: [1, 2, 3, 4, 5]
+        },
+        computed:{
+          getResult(){
+              //执行一次 不会重复执行，提高代码效率，当arr更新时 也会执行一次,后续会使用临时缓存的结果
+              console.log("计算属性执行：getResult")
+              const arr = this.arr;
+              let sum = 0;
+              for (let i = 0; i < arr.length; i++) {
+                  sum += arr[i];
+              }
+              return sum;
+          }
+        },
+        methods: {
+            //效率比较低
+            getSum() {
+                console.log('重复执行函数操作');
+                const arr = this.arr;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += arr[i];
+                }
+                return sum;
+            }
+        }
+    });
+</script>
+</body>
+</html>

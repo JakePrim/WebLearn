@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>radio 的内容:{{ value3 }}</p>
+    <!--  v-model绑定了radio类型中的value  -->
+    <input type="radio" id="one" value="1" v-model="value3">
+    <label for="one">选项1</label>
+    <input type="radio" name="" id="two" value="2" v-model="value3">
+    <label for="two">选项二</label>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value3: ''
+        }
+    });
+</script>
+</body>
+</html>

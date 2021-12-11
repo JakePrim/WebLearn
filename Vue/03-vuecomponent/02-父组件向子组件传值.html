@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>标签内容</p>
+    <!--   静态属性设置 -->
+    <my-component m-title="静态标题" m-content="静态内容"></my-component>
+    <!--  动态属性绑定  -->
+    <my-component :m-title="title" :m-content="content"></my-component>
+    <my-component :m-title="item.title" :m-content="item.content"></my-component>
+
+    <!-- v-for与组件结合,创建组件 -->
+    <demo-item v-for="item in items" :key="item.id" :item-title="item.title" :item-content="item.content"
+               :item="item"></demo-item>
+
+    <!-- 验证单向数据流 -->
+    <my-com-a :initial-title="title" :obj="obj"></my-com-a>
+
+    <my-com-b
+            :par-str="str"
+            :par-num="num"
+            :par-arr="arr"
+            :par-obj="obj"
+            :par-any="any"
+            :par-data="num"
+    ></my-com-b>
+
+    <!--  prop 验证  -->
+    <my-com-c :par-str="'jakeprim'" :par-num="num"></my-com-c>
+
+    <!-- 非props属性，会自动绑定到template的根元素上 -->
+    <my-com-d
+            :title="'示例标题内容'"
+            style="height: 200px"
+            class="colorRed"
+            data-index="3"></my-com-d>
+    <my-com-e
+        data-index="6" title="旧的title" class="blue abc" style="height: 100px"></my-com-e>
+</div>
+<script>
+
+    Vue.component('my-com-e', {
+        inheritAttrs:false,
+        template: `<div title="原始title" data-index="3" class="red" style="width: 100px">这是组件内容</div>`
+    });
+
+    Vue.component('my-com-d', {
+        template: `<div>这是组件内容</div>`
+    });
+    //prop 验证
+    Vue.component('my-com-c', {
+        props: {
+            parStr: {
+                type: String,
+                default: '100',//没有传值时 使用默认值注意和required 不用作用于同一个prop
+                //传递内容检测,如果为false vue 会弹出警告
+                validator: function (value) {
+                    return value.startsWith('jake')
+                }
+            },
+            parData: {
+                type: [Array, Object, Boolean],
+                default: function () {
+                    return [1, 2, 3]
+                }
+            },
+            parNum: {
+                type: Number,
+                required: true,//必须要传递的参数
+            }
+        },
+        template: `
+          <div>my-com-c:{{ parStr }} {{ parData }}</div>
+        `
+    })
+
+    //prop 设置类型检查
+    Vue.component("my-com-b", {
+        //props类型检查需要使用对应的对象类型结构,如果传递错误类型，Vue会出现警告，但是还可以设置成功
+        props: {
+            parStr: String,
+            parNum: Number,
+            parArr: Array,
+            parObj: Object,
+            parAny: null,
+            parData: [String, Number]
+        },
+        template: `
+          <div>
+          {{ parStr }}
+          {{ parNum }}
+          {{ parArr }}
+          {{ parObj }}
+          {{ parAny }}
+          {{ parData }}
+          </div>
+        `,
+    })
+
+    //单向数据流
+    Vue.component("my-com-a", {
+        props: ['initialTitle', 'obj'],
+        template: `
+          <div>{{ title }}
+          <button @click="fn">按钮</button>
+          </div>`,
+        data() {//data中保存一份 props进行操作
+            return {
+                title: this.initialTitle
+            }
+        },
+        methods: {
+            fn() {
+                this.title = '这是新的标题';
+                // this.initialTitle = '这是父组件标题';//出现错误
+                //如果prop为数组或对象，子组件操作会影响父组件的状态
+                this.obj.name = 'jake';
+            }
+        }
+    })
+
+    //命名规则
+    Vue.component('demoItem', {
+        template: `
+          <div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.content }}</p>
+          </div>
+        `,
+        //key 无法接收到，只有vue才能用key,保留的关键字 "key" is a reserved attribute and cannot be used as component prop.
+        props: ["itemTitle", "itemContent", "item"]
+    })
+    //定义子组件
+    Vue.component('my-component', {
+        template: `
+          <div>
+          <h3>{{ mTitle }}</h3>
+          <p>{{ mContent }}</p>
+          </div>`,
+        //接收父组件的传值，数组结构，可以接收多个值
+        props: ['mTitle', 'mContent'],
+    });
+    //根实例Vue
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            str: '示例内容',
+            arr: [1, 2, 3],
+            any: '任意类型',
+            num: 12,
+            obj: {
+                name: 'william',
+                age: 18
+            },
+            title: '这是示例标题',
+            content: '这是示例内容',
+            item: {
+                title: '这是子组件标题',
+                content: '这是子组件内容'
+            },
+            items: [
+                {
+                    id: 1,
+                    title: '标题1',
+                    content: '内容1'
+                },
+                {
+                    id: 2,
+                    title: '标题2',
+                    content: '内容2'
+                },
+                {
+                    id: 3,
+                    title: '标题3',
+                    content: '内容4'
+                }
+            ]
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <!--        <li v-for="value in arr">元素内容:{{ value }}</li>-->
+        <li v-for="(item,index) in arr">元素内容:{{ item }},索引:{{ index }}</li>
+
+        <li v-for="(value,key,index) in obj">值:{{ value }},键:{{ key }},索引:{{ index }}</li>
+    </ul>
+    <ul>
+        <li v-for="(item,index) in 5">内容:{{ item }},索引:{{ index }}</li>
+    </ul>
+    <ul>
+        <!-- key必须是唯一的值,保证内部的内容的改变 -->
+        <li v-for="item in itemList" :key="item.id">
+            {{ item.value }}:<input type="text">
+        </li>
+    </ul>
+    <!-- template模板占位符  -->
+    <template v-for="item in itemList">
+        {{ item.value }}:<input type="text">
+        <br>
+    </template>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            arr: ['内容1', '内容2', '内容3'],
+            obj: {
+                content1: '内容1',
+                content2: '内容2',
+                content3: '内容3',
+            },
+            itemList: [
+                {id: 1, value: 2},
+                {id: 2, value: 3},
+                {id: 3, value: 3}
+            ]
+        }
+    });
+</script>
+</body>
+</html>

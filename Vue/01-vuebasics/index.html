@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li>计算结果:{{ 1 + 2 + 4 }}</li>
+        <li>比较结果:{{ 2 > 1 ? 2 : 1 }}</li>
+    </ul>
+    <p>{{ title }}</p>
+    <ul>
+        <li>{{arr[0]}}</li>
+        <li>{{arr[1]}}</li>
+        <li>{{arr[2]}}</li>
+    </ul>
+</div>
+<script>
+    const app = document.querySelector("#app");
+    let vm = new Vue({
+        el: "#app", //或者app元素实例
+        data: {
+            title: "标题",
+            arr: ['1', '2', '3']
+        },
+    });
+    console.log(vm.$el); //获取结果就是element的实例
+    //也可以创建vue实例化，通过vm.$mount进行挂载
+    // vm.$mount('#app');
+
+    //data数据
+    // console.log(vm.$data.title,vm.title);
+    //data数据是响应式的
+    // vm.title = "响应式";
+</script>
+</body>
+</html>

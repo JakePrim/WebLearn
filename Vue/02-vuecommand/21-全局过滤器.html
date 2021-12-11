@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-bind:title="value | filterA">标签内容</p>
+    <p>插值表达式:{{ value2 | filterA }}</p>
+</div>
+<div id="app2">
+    <p v-bind:title="value | filterA | filterB">标签内容</p>
+    <!--   从左往右依次传递处理 -->
+    <p>插值表达式:{{ value2 | filterA | filterB }}</p>
+    <!--    过滤器可以传入多个参数-->
+    <p>{{ value | filterC('pr-',200) }}</p>
+</div>
+<script>
+    Vue.filter('filterC', function (value, part1, part2) {
+        console.log(value, part1, part2);
+        return part1 + value.split('-').join('')
+    });
+    Vue.filter('filterB', function (value) {
+        console.log(value);
+        return value[0].toUpperCase() + value.slice(1);
+    });
+    //过滤器名称  处理回调函数
+    Vue.filter('filterA', function (value) {
+        //value就是v-bind和插值表达式的数据
+        console.log(value);
+
+        //返回值就是内容中展示的处理结果
+        return value.split('-').join('');
+    });
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value: 'a-b-c',
+            value2: 'x-y-z'
+        }
+    });
+    new Vue({
+        el: '#app2',
+        data: {
+            value: 'a-b-c',
+            value2: 'x-y-z'
+        }
+    });
+</script>
+</body>
+</html>

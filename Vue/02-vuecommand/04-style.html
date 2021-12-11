@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--    style和v-bind:style可以共存 绑定属性会覆盖默认的属性 -->
+    <p style="width: 100px" :style="styleObj">标签内容</p>
+    <!--  给元素绑定多个样式对象，可以设置为数组  -->
+    <p :style="[baseStyle,styleObj1]">第一个p标签</p>
+    <p :style="[baseStyle,styleObj2]">第二个p标签</p>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            //公共样式
+            baseStyle: {
+                width: '100px',
+                height: '100px'
+            },
+            styleObj: {
+                height: '100px',
+                border: '1px solid #ccc'
+            },
+            styleObj1: {
+                backgroundColor: 'red',
+            },
+            styleObj2: {
+                backgroundColor: 'blue',
+            }
+        }
+    })
+</script>
+</body>
+</html>

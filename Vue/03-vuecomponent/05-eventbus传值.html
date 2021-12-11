@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h3>购物车</h3>
+    <product-item></product-item>
+    <product-total></product-total>
+</div>
+<script src="EventBus.js"></script>
+<script>
+    Vue.component('product-item', {
+        template: `
+          <div><span>商品名称:苹果，商品个数:{{ count }}</span>
+          <button @click="countIns">+1</button>
+          <button @click="countIns5">+5</button>
+          </div>
+        `,
+        data() {
+            return {
+                count: 0
+            }
+        },
+        methods: {
+            countIns() {
+                this.count++;
+                //通过bus触发事件
+                bus.$emit('countChange', 1);
+            },
+            countIns5() {
+                this.count += 5;
+                //通过bus触发事件
+                bus.$emit('countChange', 5);
+            }
+        }
+    })
+
+    Vue.component('product-total', {
+        template: `<p>总个数为:{{ totalCount }}</p>`,
+        data() {
+            return {
+                totalCount: 0
+            }
+        },
+        created() {
+            //组件实例化完毕，可以使用data等属性，后注册bus事件
+            bus.$on('countChange', (count) => {//箭头函数 可以直接使用this
+                this.totalCount += count;
+            })
+        }
+    })
+
+    //父组件
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value: ''
+        },
+    });
+</script>
+</body>
+</html>

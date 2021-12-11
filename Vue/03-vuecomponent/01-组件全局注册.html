@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>标签内容</p>
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-com-b></my-com-b>
+    <my-com-a></my-com-a>
+    <my-com-a></my-com-a>
+    <my-comontent-b></my-comontent-b>
+</div>
+<script>
+    //全局组件注册
+    Vue.component('my-component', {
+        template: `
+          <div>
+          <h3>{{ title }}</h3>
+          <p>{{ content }}</p>
+          </div>`,
+        data() {
+            return {
+                title: '标题',
+                content: '内容'
+            }
+        }
+    });
+    Vue.component('MyComB', {
+        template: '<div>这是B组件{{1+2*3}}</div>'
+    });
+
+    //单独配置组件属性
+    let MyComontentB = {
+        template: `
+          <div>
+          <h3>{{ title }}</h3>
+          <p>{{ content }}</p>
+          </div>
+        `,
+        data() {
+            return {
+                title: '组件B',
+                content: '组件B的内容'
+            }
+        }
+    }
+    let MyComA = {
+        template: `
+          <div>
+          <h3>{{ title }}</h3>
+          <p>{{ content }}</p>
+          </div>
+        `,
+        data() {
+            return {
+                title: '局部组件标题',
+                content: '局部组件内容'
+            }
+        }
+    }
+    //根实例Vue
+    const vm = new Vue({
+        el: '#app',
+        components: {
+            MyComA,
+            MyComontentB
+        }
+    })
+</script>
+</body>
+</html>

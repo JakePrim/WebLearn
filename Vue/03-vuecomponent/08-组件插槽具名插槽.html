@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <com-a>
+        <template v-slot:header>
+            <h3>标题</h3>
+        </template>
+        <template v-slot:default>
+            <p>内容1</p>
+            <p>内容2</p>
+        </template>
+        <!--      默认的可以不写 template -->
+<!--        <p>内容3</p>-->
+        <!--       v-slot: 可以简写为# -->
+        <template #footer>
+            <p>底部</p>
+        </template>
+    </com-a>
+</div>
+<script>
+    Vue.component('ComA', {
+        template: `
+            <div>
+                <header>
+                    <slot name="header"></slot>
+                </header>
+                <main>
+                    <slot></slot>
+                </main>
+                <footer>
+                    <slot name="footer"></slot>
+                </footer>
+            </div>
+        `
+    });
+    //父组件
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            parValue: '示例'
+        },
+    });
+</script>
+</body>
+</html>

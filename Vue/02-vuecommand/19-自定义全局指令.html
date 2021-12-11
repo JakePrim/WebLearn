@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-focus>
+</div>
+<div id="app2">
+    <input type="text" v-focus.a.b="100">
+</div>
+<script>
+    //在实例创建之前设置自定义全局指令
+    //自动获取焦点的指令
+    Vue.directive('focus', {
+        //插入的钩子元素
+        /**
+         *
+         * @param el DOM元素
+         * @param binding 指令的详细信息,包括修饰符modifiers和设置的值value
+         */
+        inserted(el,binding) {
+            console.log(binding);
+            el.focus();
+        }
+    })
+    const vm = new Vue({
+        el: '#app',
+        data: {},
+    });
+
+    new Vue({
+        el:'#app2'
+    })
+
+</script>
+</body>
+</html>

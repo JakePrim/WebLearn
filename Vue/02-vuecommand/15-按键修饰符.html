@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--  当前事件只能由a才能触发 推荐使用字母key,keyCode不推荐使用  -->
+    <input type="text" @keyup.a="fn">
+    <!--  按键a b c都可以触发事件函数   -->
+    <input type="text" @keyup.a.b.c="fn">
+    <input type="text" @keyup.49="fn">
+    <!--    特殊按键-->
+    <input type="text" @keyup.esc="fn">
+    <input type="text" @keyup.enter="fn">
+    <input type="text" @keyup.delete="fn">
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value4: '',
+            value5: []
+        },
+        methods: {
+            fn(event) {
+                console.log(event);
+                console.log('输入了对应内容');
+            },
+        }
+    });
+</script>
+</body>
+</html>

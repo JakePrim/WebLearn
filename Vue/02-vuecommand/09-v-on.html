@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <p>{{ content }}</p>
+    <button v-on:click="content='这是点击事件'">点击</button>
+    <!--  v-on: 简写：@  -->
+    <button @click="content='这是简写点击事件'">按钮2</button>
+
+
+    <button @click="change">按钮3</button>
+    <button @click="fn">按钮4</button>
+    <!--  视图中可以通过$event访问事件对象，传递个事件函数  -->
+    <button @click="fun(content,$event)">按钮5</button>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            content: '默认内容'
+        },
+        methods: {
+            //事件可以使用methods中的函数
+            change() {
+                this.content = '我是函数中的事件函数'
+            },
+            //事件对象的参数
+            fn(event) {
+                console.log(event);
+            },
+            //多个参数，同时需要使用event参数
+            fun(content, event) {
+                console.log(content, event);
+            }
+        }
+    });
+</script>
+</body>
+</html>

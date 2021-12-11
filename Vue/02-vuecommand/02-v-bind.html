@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- v-bind 绑定HTML属性 -->
+    <p v-bind:title="title">这是内容数据</p>
+    <!-- v-bind简写形式   -->
+    <p :title="title">这是内容数据</p>
+
+    <!-- 类名的绑定处理 num123 -->
+    <p :class="'num' + 1+ 2+3">p标签内容</p>
+    <!--  class=demo10  -->
+    <p :class="perfix+num">内容</p>
+
+    <!-- v-bind 一次绑定多个属性 -->
+    <p v-bind="attrObj">示例内容</p>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            title: '这是title内容',
+            perfix: 'demo',
+            num: 10,
+            attrObj: {
+                id: 'box',
+                title: '示例内容',
+                class: 'clearFix',
+                'data-title': '这是data-title内容'
+            }
+        }
+    })
+    vm.title = '这还是新的title';
+</script>
+</body>
+</html>

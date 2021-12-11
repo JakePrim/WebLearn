@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--    父组件接收子组件的数据-->
+    <com-a @on-change="comAChange"></com-a>
+    <com-b :value="value"></com-b>
+</div>
+<script>
+    //子组件A 发送数据
+    Vue.component('ComA', {
+        template: `
+          <div>
+          组件A的内容:{{ value }}
+          <button @click="send">发送</button>
+          </div>
+        `,
+        data() {
+            return {
+                value: '数据A'
+            }
+        },
+        methods: {
+            send() {
+                this.$emit('on-change', this.value)
+            }
+        }
+    });
+    Vue.component('ComB', {
+        props: {
+            'value': String
+        },
+        template: `
+          <div>组件B接收数据:{{ value }}</div>
+        `
+    })
+
+    //父组件
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value: ''
+        },
+        methods: {
+            comAChange(e) {
+                console.log(e);
+                this.value = e;
+            }
+        }
+    });
+</script>
+</body>
+</html>

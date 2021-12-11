@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--    <p v-bind:class="cls1">标签样式</p>-->
+    <!--    class="a b x" :class可以动态设置样式-->
+    <p class="a b" :class="cls1">动态绑定样式</p>
+    <!--    动态绑定多个类名 class:q w e -->
+    <p :class="cls"></p>
+    <p :class="bool ? cls1 : cls2"></p>
+    <!--   vue提供了class绑定的特殊方式 b:true 表示使用该类，false则不使用 -->
+    <p :class="{ x:bool,y:isY,z:isZ}"></p>
+    <!--   数组的绑定方式 -->
+    <p :class="['a',{x:isY},'c',cls]"></p>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            bool: true,
+            isY: false,
+            isZ: true,
+            cls: 'q w e',
+            cls1: 'x',
+            cls2: 'y',
+            cls3: 'z'
+        }
+    })
+</script>
+</body>
+</html>

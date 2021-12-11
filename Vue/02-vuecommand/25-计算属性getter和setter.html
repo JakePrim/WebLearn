@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ fullName }}</p>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            firstName: '张',
+            lastName: '三'
+        },
+        computed: {
+            // fulllName(){
+            //     return this.firstName + this.lastName;
+            // }
+            fullName: {
+                get() {
+                    return this.firstName + this.lastName;
+                },
+                //实现整体的数据更新
+                set(newValue) {//vm.fullName = '李 四' 会调用set方法
+                    //设置计算属性
+                    console.log(newValue);
+                    //根据规则分隔字符串
+                    const nameArr = newValue.split(" ");
+                    this.firstName = nameArr[0];
+                    this.lastName = nameArr[1];
+                }
+            }
+        },
+    });
+</script>
+</body>
+</html>

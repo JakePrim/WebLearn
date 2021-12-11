@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>元素内容:{{ value }}</p>
+    <!--  v-model 实现双向数据绑定  -->
+    <input type="text" v-model="value">
+
+    <p>textarea 内容为:{{ value2 }}</p>
+    <textarea v-model="value2"></textarea>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value: '',
+            value2: ''
+        }
+    });
+</script>
+</body>
+</html>

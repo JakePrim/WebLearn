@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--  单独点击没有效果，需要组合才能生效 ctrl+q -->
+    <input type="text" v-model="value" @keyup.ctrl.q="fn">
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value: ''
+        },
+        methods: {
+            //ctrl+q清空 input内容
+            fn(event) {
+                this.value = '';
+            },
+        }
+    });
+</script>
+</body>
+</html>
