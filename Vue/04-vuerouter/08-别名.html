@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <router-link to="/">首页</router-link>
+    <router-link to="/category/2">分类</router-link>
+    <router-link to="/category">未知分类</router-link>
+    <router-view></router-view>
+</div>
+<script src="lib/vue.js"></script>
+<script src="lib/vue-router.js"></script>
+<script>
+    const Index = {
+        template: `<div>首页功能</div>`,
+    }
+    const Category = {
+        template: `<div>分类:{{$route.params.id}}</div>`
+    }
+    const router = new VueRouter({
+        routes: [
+            {
+                path: '/',
+                component: Index,
+            },
+            {
+                path: '/category/:id',
+                component: Category,
+            },
+            {
+                path: '/category',
+                redirect: '/',//重定向到Index
+            }
+        ]
+    })
+    const vm = new Vue({
+        el: '#app',
+        router
+    });
+</script>
+</body>
+</html>

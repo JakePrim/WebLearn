@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <button @click="onUser()">用户</button>
+    <router-link :to="{name:'school',params:{id:100,name:'北京'}}">点击</router-link>
+    <router-view></router-view>
+</div>
+<script src="lib/vue.js"></script>
+<script src="lib/vue-router.js"></script>
+<script>
+    const User = {
+        template: `<div>这是用户{{$route.params.id}}</div>`
+    }
+    const School = {
+        template: `<div>School 组件的功能:{{$route.params}}</div>`
+    }
+    const routes = [
+        {
+            path: '/user/:id',
+            component: User,
+        },
+        {
+            path: '/user/:id/info/school',
+            name: 'school',//命名路由
+            component: School
+        }
+    ]
+    const router = new VueRouter({routes});
+    const vm = new Vue({
+        el: '#app',
+        router,
+        methods: {
+            onUser() {
+                console.log(this.$router);
+                // this.$router.push('/user/100');
+                this.$router.push({
+                    name: 'school',
+                    params: {id: 1, name: '上海'}
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>

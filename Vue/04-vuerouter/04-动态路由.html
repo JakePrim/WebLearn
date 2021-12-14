@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--  路由操作组件  -->
+    <!--    路由链接设置组件-->
+    <router-link to="/">首页</router-link>
+    <router-link to="/user">用户</router-link>
+    <router-link to="/category">分类</router-link>
+    <!--  路由匹配显示的组件  -->
+    <router-view name="sideBar"></router-view>
+    <router-view></router-view>
+</div>
+<script src="lib/vue.js"></script>
+<script src="lib/vue-router.js"></script>
+<script>
+    //定义组件
+    const Index = {
+        template: `<div>首页功能</div>`
+    };
+    const User = {
+        template: `<div>用户功能</div>`
+    };
+    const Category = {
+        template: `<div>分类功能</div>`
+    }
+
+    const SideBar = {
+        template: `<div>sideBar</div>`
+    }
+
+
+    //定义路由规则
+    const routes = [
+        {path: '/', component: Index},
+        {
+            path: '/user', components: {
+                sideBar: SideBar,//用户组件需要侧边栏
+                default: User
+            }
+        },
+        {path: '/category', component: Category},
+    ];
+
+    //创建VueRouter 实例
+    const router = new VueRouter({
+        routes: routes
+    })
+
+    const vm = new Vue({
+        el: '#app',
+        router
+    })
+</script>
+</body>
+</html>

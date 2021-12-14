@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <router-link :to="{name:'school',params:{id:11,data:'2021-1-1'}}">学校1</router-link>
+    <router-link to="/100/2021-2-1">学校2</router-link>
+    <router-view></router-view>
+</div>
+<script src="lib/vue.js"></script>
+<script src="lib/vue-router.js"></script>
+<script>
+    const School = {
+        template: `<div>School 组件 {{$route.params}}</div>`,
+    }
+    const router = new VueRouter({
+        routes: [
+            {
+                path: '/user/:id/info/school/:data',
+                name: 'school',
+                component: School,
+                alias: '/:id/:data'
+            }
+        ]
+    })
+    const vm = new Vue({
+        el: '#app',
+        router
+    });
+</script>
+</body>
+</html>
